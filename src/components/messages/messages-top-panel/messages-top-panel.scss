@@ -1,0 +1,13 @@
+.messages-top-panel{
+  height: 54px;
+  top:0;
+
+  display: flex;
+
+  .avatar{
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: #EFEFEF;
+  }
+}
