@@ -10,6 +10,9 @@
 - список чатов,
 - обмен сообщениями
 
+## [Демо](https://hardcore-nightingale-df8279.netlify.app)
+Проект опубликован на Netlify 
+
 ## Установка
 
 - `npm run build` — сборка стабильной версии
