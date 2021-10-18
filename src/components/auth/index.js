@@ -1,3 +1,3 @@
-import {template} from "./auth.tmpl";
+import './auth.scss';
 
-export default template;
+export {default} from './auth.js';

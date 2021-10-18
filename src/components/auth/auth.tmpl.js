@@ -1,5 +1,4 @@
-import Handlebars from "handlebars";
-import inputTemplate from "../../components/input";
+import input from '../input'
 
 export const template = `
     <div class="page">
@@ -13,5 +12,3 @@ export const template = `
         <a href="#">{{linkText}}</a>
     </div>
 `;
-
-Handlebars.registerPartial('input', Handlebars.compile(inputTemplate));

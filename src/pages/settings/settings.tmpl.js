@@ -1,6 +1,5 @@
-import Handlebars from "handlebars";
-import inputTemplate from "../../components/input";
-import buttonCancelTemplate from "../../components/button/button-cancel";
+import input from '../../components/input';
+import buttonCancel from '../../components/button/button-cancel'
 
 export const template = `
     <div class="page">
@@ -17,6 +16,3 @@ export const template = `
         {{> button-cancel}}
     </div>
 `;
-
-Handlebars.registerPartial('input', Handlebars.compile(inputTemplate));
-Handlebars.registerPartial('button-cancel', Handlebars.compile(buttonCancelTemplate));

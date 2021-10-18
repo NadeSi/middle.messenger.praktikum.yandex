@@ -1,5 +1,4 @@
-import inputTemplate from "../../input";
-import Handlebars from "handlebars";
+import input from '../../input'
 
 export const template = `
     <div class="messages-input-panel">
@@ -8,6 +7,4 @@ export const template = `
         <button class="button-send"></button>
     </div>
 `;
-
-Handlebars.registerPartial('input', Handlebars.compile(inputTemplate));
 

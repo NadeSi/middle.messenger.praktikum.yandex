@@ -1,4 +1,3 @@
-import {template} from "./chat-panel.tmpl";
 import './chat-panel.scss';
 
-export default template;
+export {default} from './chat-panel.js';

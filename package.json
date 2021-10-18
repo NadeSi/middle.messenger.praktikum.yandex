@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "./node_modules/.bin/parcel static/index.html",
     "build": "./node_modules/.bin/parcel build static/index.html",
-    "start": "node ./express.js"
+    "start": "npm run build && node ./express.js"
   },
   "repository": {
     "type": "git",

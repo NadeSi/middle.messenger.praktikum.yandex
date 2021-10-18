@@ -1,4 +1,3 @@
-import {template} from "./input.tmpl";
-import './input.scss'
+import './input.scss';
 
-export default template;
+export {default} from './input.js';

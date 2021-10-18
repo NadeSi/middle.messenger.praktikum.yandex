@@ -1,21 +1,15 @@
-import Handlebars from "handlebars";
-import chatPanelTemplate from "../../components/chat/chat-panel";
-import messagesTopPanelTemplate from "../../components/messages/messages-top-panel";
-import messagesViewPanelTemplate from "../../components/messages/messages-view-panel";
-import messagesInputPanelTemplate from "../../components/messages/messages-input-panel";
+import chatPanel from '../../components/chat/chat-panel'
+import messagesTopPanel from "../../components/messages/messages-top-panel";
+import messagesViewPanel from "../../components/messages/messages-view-panel";
+import messagesInputPanel from "../../components/messages/messages-input-panel";
 
 export const template = `
     <div class="page chat">
-        {{> chat-panel}}
+        {{> chatPanel}}
         <div class="messages-panel">
-            {{> messages-top-panel}}
-            {{> messages-view-panel}}
-            {{> messages-input-panel}}
+            {{> messagesTopPanel}}
+            {{> messagesViewPanel}}
+            {{> messagesInputPanel}}
         </div>
     </div>
 `;
-
-Handlebars.registerPartial('chat-panel', Handlebars.compile(chatPanelTemplate));
-Handlebars.registerPartial('messages-top-panel', Handlebars.compile(messagesTopPanelTemplate));
-Handlebars.registerPartial('messages-view-panel', Handlebars.compile(messagesViewPanelTemplate));
-Handlebars.registerPartial('messages-input-panel', Handlebars.compile(messagesInputPanelTemplate));

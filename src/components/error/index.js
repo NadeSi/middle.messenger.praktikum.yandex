@@ -1,3 +1,1 @@
-import {template} from "./error.tmpl";
-
-export default template;
+export {default} from './error.js';

@@ -1,3 +1,3 @@
-import {template} from "./button-cancel.tmpl";
+import './button-cancel.scss';
 
-export default template;
+export {default} from './button-cancel.js';
