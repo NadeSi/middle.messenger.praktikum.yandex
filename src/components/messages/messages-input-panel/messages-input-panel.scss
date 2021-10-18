@@ -1,0 +1,24 @@
+.messages-input-panel{
+  height: 54px;
+  top:0;
+
+  display: flex;
+  align-content: stretch;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.button-add-file{
+  --size: 32px;
+  width: var(--size);
+  height: var(--size);
+}
+
+.button-send{
+  --size: 28px;
+  width: var(--size);
+  height: var(--size);
+
+  border-radius: 50%;
+}
