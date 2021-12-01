@@ -1,0 +1,35 @@
+/* TODO разобарться почему нужно прописывать путь */
+$font-path: "./vendor/fonts/Inter/";
+
+@font-face {
+
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src:
+    url("#{$font-path}Inter-Regular.woff2?v=3.15") format("woff2"),
+    url("#{$font-path}Inter-Regular.woff?v=3.15") format("woff");
+}
+
+/*
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("Inter-Medium.woff2?v=3.15") format("woff2"),
+  url("Inter-Medium.woff?v=3.15") format("woff");
+}
+*/
+
+@font-face {
+
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src:
+    url("#{$font-path}Inter-Black.woff2?v=3.15") format("woff2"),
+    url("#{$font-path}Inter-Black.woff?v=3.15") format("woff");
+}
