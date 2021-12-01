@@ -1,10 +1,12 @@
-@import 'variables.scss';
-@import 'page.scss';
-@import 'button.scss';
+@import "./vendor/fonts/Inter/inter.scss";
+@import "page.scss";
+@import "button.scss";
+@import "icon.scss";
 
-body{
+body {
+
   margin: 0;
+  font-family: Inter, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-

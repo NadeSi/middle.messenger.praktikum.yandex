@@ -1,4 +1,12 @@
-.messages-view-panel{
+.messages-view-panel {
+
   width: 100%;
   height: 100%;
+
+  display: grid;
+  align-items: end;
+  justify-items: stretch;
+  justify-content: stretch;
+  align-content: flex-end;
+  gap: 10px;
 }

@@ -1,0 +1,58 @@
+@import "../../../styles/variables";
+
+.message-item {
+
+  margin: 0 auto 0.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: center;
+
+  .message-item-container {
+
+    box-sizing: border-box;
+    background-color: $message-in-background-color;
+    padding: 11px;
+    border-radius: 12px;
+    max-width: 80%;
+
+    .message {
+
+      position: relative;
+      display: block;
+      right: 0;
+      top: 0;
+
+      text-align: left;
+    }
+
+    .time {
+
+      position: relative;
+      right: 0;
+      bottom: 0;
+      display: block;
+      font-size: 9px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 9px;
+      letter-spacing: 0;
+      text-align: right;
+    }
+  }
+
+  &.is-out {
+
+    flex-direction: row-reverse;
+
+    .message-item-container {
+
+      background-color: $message-out-background-color;
+
+      .time {
+
+        color: $blue-color;
+      }
+    }
+  }
+}
