@@ -1,8 +1,24 @@
-.input-container{
+@import "../../styles/variables";
+
+.input-container {
+
   width: 100%;
 }
 
-.input{
+.input {
+
   width: 100%;
   box-sizing: border-box;
+
+  height: 32px;
+  border: none;
+  border-radius: 3px;
+  background-color: $component-background-color;
+  padding: 5px;
+}
+
+.input-error {
+
+  color: $error-color;
+  background-color: $error-color;
 }

@@ -1,6 +1,9 @@
-.messages-input-panel{
+@import "../../../styles/variables";
+
+.messages-input-panel {
+
   height: 54px;
-  top:0;
+  top: 0;
 
   display: flex;
   align-content: stretch;
@@ -9,16 +12,29 @@
   gap: 10px;
 }
 
-.button-add-file{
-  --size: 32px;
-  width: var(--size);
-  height: var(--size);
+.button-add-file {
+  $size: 32px;
+
+  width: $size;
+  height: $size;
+
+  .icon-add-file {
+
+    background-image: url("./icons/clip.svg");
+  }
 }
 
-.button-send{
-  --size: 28px;
-  width: var(--size);
-  height: var(--size);
+.button-send {
+  $size: 28px;
+
+  width: $size;
+  height: $size;
 
   border-radius: 50%;
+  background-color: $blue-color;
+
+  .icon-send {
+
+    background-image: url("./icons/arrow.svg");
+  }
 }
