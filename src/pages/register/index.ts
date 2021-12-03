@@ -1,13 +1,13 @@
 import Block from '../../modules/block';
 import {displayPage} from '../../utils/display-page';
-import {formElementsDefinition, IRegisterProps} from './register.model';
+import {formElementsDefinition, RegisterProps} from './register.model';
 import template from './register.tmpl';
 import AuthComponent from '../../components/auth';
 import InputComponent from '../../components/input';
 import {validateFormInput} from '../../utils/validation';
 import FormComponent from '../../components/form';
 
-export class Register extends Block<IRegisterProps> {
+export class Register extends Block<RegisterProps> {
   constructor() {
     super('page-register', template, {
       authForm: new AuthComponent({

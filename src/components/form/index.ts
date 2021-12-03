@@ -24,14 +24,10 @@ class FormComponent extends Component {
 
   handleValidateForm(formData: FormData, form: HTMLFormElement): boolean {
     let isValid = true;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     const data = Object.fromEntries(formData);
 
     for (const key in data) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      if (!this.handleValidateInput(form.elements[key])) {
+      if (!this.handleValidateInput(form.elements.namedItem(key) as Element)) {
         isValid = false;
       }
     }
@@ -39,7 +35,7 @@ class FormComponent extends Component {
     return isValid;
   }
 
-  handleValidateInput(element: HTMLInputElement): boolean {
+  handleValidateInput(element: Element): boolean {
     if (this.handlers.validateFormInput) {
       return this.handlers.validateFormInput(element as HTMLInputElement);
     }

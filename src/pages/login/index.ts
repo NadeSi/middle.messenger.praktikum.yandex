@@ -1,13 +1,13 @@
 import Block from '../../modules/block';
 import {displayPage} from '../../utils/display-page';
-import {ILoginProps, formElementsDefinition} from './login.model';
+import {LoginProps, formElementsDefinition} from './login.model';
 import template from './login.tmpl';
 import AuthComponent from '../../components/auth';
 import InputComponent from '../../components/input';
 import FormComponent from '../../components/form';
 import {validateFormInput} from '../../utils/validation';
 
-export class Login extends Block<ILoginProps> {
+export class Login extends Block<LoginProps> {
   constructor() {
     super('page-login', template, {
       authForm: new AuthComponent({

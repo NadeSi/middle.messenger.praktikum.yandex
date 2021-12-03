@@ -13,9 +13,8 @@ export interface IHttpOptions {
 }
 
 export function queryStringify(data: Record<string, unknown>): string {
-  const queryList = [];
-  for (const [key, value] of Object.entries(data)) {
-    queryList.push(`${key}=${Array.isArray(value) ? value.concat() : value}`);
-  }
-  return `?${queryList.join('&')}`;
+  const keys = Object.keys(data);
+  return keys.reduce((result, key, index) => {
+    return `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`;
+  }, '?');
 }

@@ -4,7 +4,7 @@ import FormComponent from '../../components/form';
 import {IFormElementsDefinition} from '../../components/form/form.model';
 import {FORM_VALIDATE_PATTERNS} from '../../utils/validation';
 
-export interface ISettingProps {
+export type SettingProps = {
   avatar: string;
   oldPassword: string;
   newPassword: string;
@@ -14,12 +14,12 @@ export interface ISettingProps {
   display_name: string;
   form: FormComponent;
   buttonCancel: ButtonCancelComponent;
-}
+};
 
-export interface ISettingEditProps {
+export type SettingEditProps = {
   form: FormComponent;
   buttonCancel: ButtonCancelComponent;
-}
+};
 
 export const settingsFormElementsDef: IFormElementsDefinition[] = [
   {

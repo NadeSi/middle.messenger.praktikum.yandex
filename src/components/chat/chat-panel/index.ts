@@ -10,5 +10,4 @@ class ChatPanelComponent extends Component {
   }
 }
 
-export {IChatPanelProps};
 export default ChatPanelComponent;

@@ -2,7 +2,7 @@ import Block from '../../modules/block';
 import {displayPage} from '../../utils/display-page';
 
 import template from './chat.tmpl';
-import {IChatProps} from './chat.model';
+import {ChatProps} from './chat.model';
 import InputComponent from '../../components/input';
 import {IInputType} from '../../components/input';
 import ChatPanelComponent from '../../components/chat/chat-panel';
@@ -14,7 +14,7 @@ import MessageItemComponent from '../../components/messages/message-item';
 
 import './chat.scss';
 
-export class Chat extends Block<IChatProps> {
+export class Chat extends Block<ChatProps> {
   constructor() {
     super('page-chat', template, {
       chatPanel: new ChatPanelComponent({

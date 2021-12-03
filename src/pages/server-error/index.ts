@@ -1,10 +1,10 @@
 import Block from '../../modules/block';
 import {displayPage} from '../../utils/display-page';
-import {IServerErrorProps} from './server-error.model';
+import {ServerErrorProps} from './server-error.model';
 import template from './server-error.tmpl';
-import {ErrorComponent} from '../../components/error';
+import ErrorComponent from '../../components/error';
 
-export class NotFound extends Block<IServerErrorProps> {
+export class NotFound extends Block<ServerErrorProps> {
   constructor() {
     super('page-server-error', template, {
       error: new ErrorComponent({

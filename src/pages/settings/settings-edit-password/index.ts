@@ -1,13 +1,13 @@
 import Block from '../../../modules/block';
 import {displayPage} from '../../../utils/display-page';
-import {ISettingEditProps, settingsPasswordsFormElementsDef} from '../setting.model';
+import {SettingEditProps, settingsPasswordsFormElementsDef} from '../setting.model';
 import template from './settings-edit-password.tmpl';
 import InputComponent from '../../../components/input';
 import ButtonCancelComponent from '../../../components/button/button-cancel';
 import FormComponent from '../../../components/form';
 import {validateFormInput} from '../../../utils/validation';
 
-export class SettingsEditPassword extends Block<ISettingEditProps> {
+export class SettingsEditPassword extends Block<SettingEditProps> {
   constructor() {
     super('page-settings-edit-password', template, {
       buttonCancel: new ButtonCancelComponent(),
