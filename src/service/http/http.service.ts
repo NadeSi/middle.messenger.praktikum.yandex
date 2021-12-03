@@ -22,7 +22,7 @@ export class HttpService {
   };
 
   request = (url: string, options: IHttpOptions, timeout = 5000) => {
-    const {method, data, headers} = options;
+    const {method, data = {}, headers} = options;
 
     return new Promise((resolve, reject) => {
       if (!method) {
@@ -31,7 +31,6 @@ export class HttpService {
       }
 
       const xhr = new XMLHttpRequest();
-      const isGet = method === CallMethodType.GET;
 
       xhr.open(method, url);
 
@@ -49,11 +48,7 @@ export class HttpService {
       xhr.timeout = timeout;
       xhr.ontimeout = reject;
 
-      if (isGet || !data) {
-        xhr.send();
-      } else {
-        xhr.send(data);
-      }
+      xhr.send(data);
     });
   };
 }

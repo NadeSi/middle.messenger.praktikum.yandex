@@ -4,7 +4,7 @@ import template from './input.tmpl';
 
 import './input.scss';
 
-export class InputComponent extends Component {
+class InputComponent extends Component {
   constructor(props: IInputProps) {
     super('input', template, props);
   }

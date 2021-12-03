@@ -1,11 +1,10 @@
 import Handlebars from 'handlebars';
 import EventBus from './event-bus';
 
-type Meta<T extends object | Block = any> = {
+type Meta<T extends Record<string, unknown>> = {
   tagName: string;
   template: string;
-  //TODO разобраться с дженериком
-  props: any;
+  props: T;
 };
 
 enum EVENTS {
@@ -15,7 +14,7 @@ enum EVENTS {
   FLOW_RENDER = 'flow:render',
 }
 
-export default abstract class Block<T extends object = any> {
+export default abstract class Block<T extends Record<string, unknown> = any> {
   _element: HTMLElement | null = null;
   readonly _meta: Meta<T>;
   eventBus: () => EventBus;
@@ -51,7 +50,7 @@ export default abstract class Block<T extends object = any> {
 
   _createResources() {
     const {tagName} = this._meta;
-    this._element = Block._createDocumentElement(tagName);
+    this._element = this._createDocumentElement(tagName);
   }
 
   init() {
@@ -116,11 +115,11 @@ export default abstract class Block<T extends object = any> {
 
   _makePropsProxy = (props: Meta<T>['props']) => {
     return new Proxy(props, {
-      get: (target, prop) => {
+      get: (target, prop: keyof T & string) => {
         const value = target[prop];
         return typeof value === 'function' ? value.bind(target) : value;
       },
-      set: (target, prop, value) => {
+      set: (target, prop: keyof T & string, value) => {
         target[prop] = value;
 
         this.eventBus().emit(EVENTS.FLOW_CDU, {...target}, target);
@@ -132,7 +131,7 @@ export default abstract class Block<T extends object = any> {
     });
   };
 
-  static _createDocumentElement(tagName: Meta['tagName']) {
+  _createDocumentElement(tagName: Meta<T>['tagName']) {
     return document.createElement(tagName);
   }
 
@@ -153,7 +152,7 @@ export default abstract class Block<T extends object = any> {
   afterRender(parentElement?: HTMLElement) {
     for (const propKey in this.props) {
       if (this.props[propKey] instanceof Block) {
-        this.props[propKey]?.afterRender(parentElement || (this.element as HTMLElement));
+        (this.props[propKey] as Block).afterRender(parentElement || (this.element as HTMLElement));
       }
     }
   }

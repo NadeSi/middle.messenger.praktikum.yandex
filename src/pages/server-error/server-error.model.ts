@@ -1,5 +1,5 @@
 import ErrorComponent from '../../components/error';
 
-export interface IServerErrorProps {
+export type ServerErrorProps = {
   error: ErrorComponent;
-}
+};

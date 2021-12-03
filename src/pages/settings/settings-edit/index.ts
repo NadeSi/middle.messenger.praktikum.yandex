@@ -1,13 +1,13 @@
 import Block from '../../../modules/block';
 import {displayPage} from '../../../utils/display-page';
-import {ISettingEditProps, settingsFormElementsDef} from '../setting.model';
+import {SettingEditProps, settingsFormElementsDef} from '../setting.model';
 import template from './settings-edit.tmpl';
 import InputComponent from '../../../components/input';
 import ButtonCancelComponent from '../../../components/button/button-cancel';
 import FormComponent from '../../../components/form';
 import {validateFormInput} from '../../../utils/validation';
 
-export class SettingsEdit extends Block<ISettingEditProps> {
+export class SettingsEdit extends Block<SettingEditProps> {
   constructor() {
     super('page-settings-edit', template, {
       buttonCancel: new ButtonCancelComponent(),

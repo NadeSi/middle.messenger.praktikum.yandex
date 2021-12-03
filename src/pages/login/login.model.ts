@@ -3,9 +3,9 @@ import {IFormElementsDefinition} from '../../components/form/form.model';
 import {IInputType} from '../../components/input';
 import {FORM_VALIDATE_PATTERNS} from '../../utils/validation';
 
-export interface ILoginProps {
+export type LoginProps = {
   authForm: AuthComponent;
-}
+};
 
 export const formElementsDefinition: IFormElementsDefinition[] = [
   {

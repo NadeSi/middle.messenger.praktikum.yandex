@@ -5,5 +5,5 @@ export interface IMessagesInputPanelProps {
 }
 
 export interface IMessagesInputPanelHandlers {
-  onSendMessage(message: any): void;
+  onSendMessage(message: string): void;
 }

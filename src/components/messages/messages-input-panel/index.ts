@@ -4,7 +4,7 @@ import template from './messages-input-panel.tmpl';
 
 import './messages-input-panel.scss';
 
-export class MessagesInputPanelComponent extends Component {
+class MessagesInputPanelComponent extends Component {
   handlers: IMessagesInputPanelHandlers;
 
   constructor(props: IMessagesInputPanelProps, handlers: IMessagesInputPanelHandlers) {
@@ -32,5 +32,4 @@ export class MessagesInputPanelComponent extends Component {
   };
 }
 
-export {IMessagesInputPanelProps};
 export default MessagesInputPanelComponent;

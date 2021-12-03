@@ -1,12 +1,12 @@
 import Handlebars from 'handlebars';
 import {Component} from '../../../modules/component';
-import {IMessageItem} from './message-item.model';
+import {IMessageItemProps} from './message-item.model';
 import template from './message-item.tmpl';
 
 import './message-item.scss';
 
 class MessageItemComponent extends Component {
-  constructor(props: IMessageItem) {
+  constructor(props: IMessageItemProps) {
     Handlebars.registerHelper('isCurrentUser', function (userLogin) {
       //TODO научиться определять текущего пользователя
       return userLogin === 'alex';
@@ -19,5 +19,4 @@ class MessageItemComponent extends Component {
   }
 }
 
-export {IMessageItem};
 export default MessageItemComponent;

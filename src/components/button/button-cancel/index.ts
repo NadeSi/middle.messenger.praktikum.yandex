@@ -14,5 +14,4 @@ class ButtonCancelComponent extends Component {
   }
 }
 
-export {IButtonCancelProps};
 export default ButtonCancelComponent;

@@ -1,5 +1,5 @@
 import ErrorComponent from '../../components/error';
 
-export interface INotFoundProps {
+export type NotFoundProps = {
   error: ErrorComponent;
-}
+};

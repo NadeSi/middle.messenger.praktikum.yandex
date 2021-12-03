@@ -10,5 +10,4 @@ class ChatItemComponent extends Component {
   }
 }
 
-export {IChatItem};
 export default ChatItemComponent;

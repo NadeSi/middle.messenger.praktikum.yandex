@@ -3,9 +3,9 @@ import MessagesTopPanelComponent from '../../components/messages/messages-top-pa
 import MessagesViewPanelComponent from '../../components/messages/messages-view-panel';
 import MessagesInputPanelComponent from '../../components/messages/messages-input-panel';
 
-export interface IChatProps {
+export type ChatProps = {
   chatPanel: ChatPanelComponent;
   messagesTopPanel: MessagesTopPanelComponent;
   messagesViewPanel: MessagesViewPanelComponent;
   messagesInputPanel: MessagesInputPanelComponent;
-}
+};
