@@ -1,16 +1,24 @@
 import Block from '../../../modules/block';
-import {displayPage} from '../../../utils/display-page';
 import {SettingEditProps, settingsPasswordsFormElementsDef} from '../setting.model';
 import template from './settings-edit-password.tmpl';
 import InputComponent from '../../../components/input';
 import ButtonCancelComponent from '../../../components/button/button-cancel';
 import FormComponent from '../../../components/form';
 import {validateFormInput} from '../../../utils/validation';
+import Router from '../../../modules/router/router';
+import AppRoutes from '../../../utils/app-routes';
 
-export class SettingsEditPassword extends Block<SettingEditProps> {
+export default class SettingsEditPassword extends Block<SettingEditProps> {
+  router = Router.getInstance();
+
   constructor() {
     super('page-settings-edit-password', template, {
-      buttonCancel: new ButtonCancelComponent(),
+      buttonCancel: new ButtonCancelComponent(
+        {},
+        {
+          onClick: (e: Event) => this.handleClickCancel(e),
+        },
+      ),
       form: new FormComponent(
         {
           formName: 'settings-edit-form',
@@ -41,6 +49,7 @@ export class SettingsEditPassword extends Block<SettingEditProps> {
     });
 
     console.log(data);
+    this.goBack();
   }
 
   handleFormInputValidate(formInput: HTMLInputElement): boolean {
@@ -51,7 +60,12 @@ export class SettingsEditPassword extends Block<SettingEditProps> {
     }
     return true;
   }
-}
 
-const page = new SettingsEditPassword();
-displayPage(page);
+  handleClickCancel() {
+    this.goBack();
+  }
+
+  goBack() {
+    this.router.go(AppRoutes.SETTINGS);
+  }
+}

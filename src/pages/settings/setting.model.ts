@@ -3,14 +3,15 @@ import ButtonCancelComponent from '../../components/button/button-cancel';
 import FormComponent from '../../components/form';
 import {IFormElementsDefinition} from '../../components/form/form.model';
 import {FORM_VALIDATE_PATTERNS} from '../../utils/validation';
+import LinkComponent from '../../components/link';
 
 export type SettingProps = {
   avatar: string;
   oldPassword: string;
   newPassword: string;
-  changeInfoText: string;
-  changePasswordText: string;
-  exitText: string;
+  changeInfoLink: LinkComponent;
+  changePasswordLink: LinkComponent;
+  exitLink: LinkComponent;
   display_name: string;
   form: FormComponent;
   buttonCancel: ButtonCancelComponent;

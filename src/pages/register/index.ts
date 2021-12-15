@@ -1,18 +1,25 @@
 import Block from '../../modules/block';
-import {displayPage} from '../../utils/display-page';
 import {formElementsDefinition, RegisterProps} from './register.model';
 import template from './register.tmpl';
 import AuthComponent from '../../components/auth';
 import InputComponent from '../../components/input';
 import {validateFormInput} from '../../utils/validation';
 import FormComponent from '../../components/form';
+import LinkComponent from '../../components/link';
+import AppRoutes from '../../utils/app-routes';
+import Router from '../../modules/router/router';
 
-export class Register extends Block<RegisterProps> {
+export default class Register extends Block<RegisterProps> {
+  router = Router.getInstance();
+
   constructor() {
     super('page-register', template, {
       authForm: new AuthComponent({
         header: 'Регистрация',
-        linkText: 'Войти',
+        link: new LinkComponent({
+          text: 'Войти',
+          href: AppRoutes.LOGIN,
+        }),
         form: new FormComponent(
           {
             formName: 'register-form',
@@ -45,6 +52,7 @@ export class Register extends Block<RegisterProps> {
       password: formData.get('password'),
     };
     console.log(data);
+    this.router.go(AppRoutes.LOGIN);
   }
 
   handleFormInputValidate(formInput: HTMLInputElement): boolean {
@@ -56,6 +64,3 @@ export class Register extends Block<RegisterProps> {
     return true;
   }
 }
-
-const page = new Register();
-displayPage(page);

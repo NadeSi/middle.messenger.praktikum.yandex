@@ -1,5 +1,7 @@
 @import "../../../styles/variables";
 
+$iconFolder: '../../../styles/icons';
+
 .messages-input-panel {
 
   height: 54px;
@@ -20,7 +22,7 @@
 
   .icon-add-file {
 
-    background-image: url("./icons/clip.svg");
+    background-image: url("#{$iconFolder}/clip.svg");
   }
 }
 
@@ -35,6 +37,6 @@
 
   .icon-send {
 
-    background-image: url("./icons/arrow.svg");
+    background-image: url("#{$iconFolder}/arrow.svg");
   }
 }

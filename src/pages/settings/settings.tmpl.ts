@@ -3,10 +3,10 @@ export default `
     <div class="page">
         <div>{{avatar}}</div>
         <p>{{display_name}}</p>
-        {{> form-component this.form.props}}
-        <a href="#">{{changeInfoText}}</a>
-        <a href="#">{{changePasswordText}}</a>
-        <a href="#">{{exitText}}</a>
-        {{> button-cancel-component buttonCancel}}
+        {{> form-component form.props}}
+        {{> link-component changeInfoLink.props}}
+        {{> link-component changePasswordLink.props}}
+        {{> link-component exitLink.props}}
+        {{> button-cancel-component buttonCancel.props}}
     </div>
 `;

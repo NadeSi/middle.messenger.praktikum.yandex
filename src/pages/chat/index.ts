@@ -1,6 +1,4 @@
 import Block from '../../modules/block';
-import {displayPage} from '../../utils/display-page';
-
 import template from './chat.tmpl';
 import {ChatProps} from './chat.model';
 import InputComponent from '../../components/input';
@@ -14,7 +12,7 @@ import MessageItemComponent from '../../components/messages/message-item';
 
 import './chat.scss';
 
-export class Chat extends Block<ChatProps> {
+export default class Chat extends Block<ChatProps> {
   constructor() {
     super('page-chat', template, {
       chatPanel: new ChatPanelComponent({
@@ -76,10 +74,7 @@ export class Chat extends Block<ChatProps> {
     });
   }
 
-  handleSendMessage(message: any) {
+  handleSendMessage(message: string) {
     console.log(message);
   }
 }
-
-const page = new Chat();
-displayPage(page);

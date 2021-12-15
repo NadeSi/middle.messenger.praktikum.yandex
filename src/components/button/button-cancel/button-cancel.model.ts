@@ -1,2 +1,5 @@
 export interface IButtonCancelProps {}
-export interface IButtonCancelHandlers {}
+
+export interface IButtonCancelHandlers {
+  onClick(event: Event): void;
+}
