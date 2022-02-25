@@ -1,0 +1,27 @@
+@import "../../../../styles/variables";
+
+.chat-sidebar {
+
+  position: relative;
+  min-width: 300px;
+  width: 40%;
+  height: 100vh;
+  padding: 0 10px;
+
+  background-color: $secondary-background-color;
+  box-sizing: border-box;
+}
+
+.chat-sidebar-right {
+  /* - */
+}
+
+.chat-sidebar-left {
+
+  display: none;
+
+  &.active {
+
+    display: block;
+  }
+}

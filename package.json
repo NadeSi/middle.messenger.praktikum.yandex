@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/NadeSi/middle.messenger.praktikum.yandex#readme",
   "dependencies": {
+    "formik": "^2.2.9",
     "handlebars": "^4.7.7",
     "stylelint-scss": "^4.0.0",
     "vendor": "^1.7.0"

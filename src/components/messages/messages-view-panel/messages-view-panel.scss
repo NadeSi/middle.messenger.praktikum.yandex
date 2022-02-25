@@ -1,12 +1,19 @@
 .messages-view-panel {
 
-  width: 100%;
+  overflow: auto;
   height: 100%;
 
-  display: grid;
-  align-items: end;
-  justify-items: stretch;
-  justify-content: stretch;
-  align-content: flex-end;
-  gap: 10px;
+  padding: 10px 20px;
+
+  .messages-view-panel-container {
+
+    min-height: 100%;
+
+    display: grid;
+    align-items: end;
+    justify-items: stretch;
+    justify-content: stretch;
+    align-content: end;
+    gap: 10px;
+  }
 }

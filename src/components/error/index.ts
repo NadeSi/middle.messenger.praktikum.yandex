@@ -3,8 +3,8 @@ import {IErrorProps} from './error.model';
 import template from './error.tmpl';
 
 import './error.scss';
-import LinkComponent from '../link';
-import AppRoutes from '../../utils/app-routes';
+import LinkComponent from '../common/link';
+import AppRoutes from '../../utils/app-router/app-routes';
 
 class ErrorComponent extends Component {
   constructor(props: IErrorProps) {

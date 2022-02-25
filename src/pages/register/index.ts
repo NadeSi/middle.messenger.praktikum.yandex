@@ -1,15 +1,20 @@
-import Block from '../../modules/block';
 import {formElementsDefinition, RegisterProps} from './register.model';
 import template from './register.tmpl';
-import AuthComponent from '../../components/auth';
-import InputComponent from '../../components/input';
-import {validateFormInput} from '../../utils/validation';
-import FormComponent from '../../components/form';
-import LinkComponent from '../../components/link';
-import AppRoutes from '../../utils/app-routes';
-import Router from '../../modules/router/router';
 
-export default class Register extends Block<RegisterProps> {
+import Page from '../../modules/page';
+import {IState} from '../../modules/store';
+import connect from '../../modules/connect';
+import Router from '../../modules/router/router';
+import AppRoutes from '../../utils/app-router/app-routes';
+import {validateFormInput} from '../../utils/validation';
+import {AuthController} from '../../controllers/auth';
+import AuthComponent from '../../components/auth';
+import FormComponent, {getFormKeys} from '../../components/form';
+import LinkComponent from '../../components/common/link';
+import {getFormValues} from '../../components/form';
+import {AuthItem} from '../../models/auth';
+
+class Register extends Page<RegisterProps> {
   router = Router.getInstance();
 
   constructor() {
@@ -24,19 +29,12 @@ export default class Register extends Block<RegisterProps> {
           {
             formName: 'register-form',
             buttonSubmitText: 'Зарегистрироваться',
-            formInputs: formElementsDefinition.map((formElement) => {
-              return new InputComponent({
-                name: formElement.name,
-                label: formElement.label,
-                type: formElement.type,
-                value: formElement.value,
-                placeholder: formElement.placeholder,
-              });
-            }),
+            formInputsModel: formElementsDefinition,
+            formInputValues: getFormValues(formElementsDefinition),
           },
           {
-            onSubmit: (formData: FormData) => this.handleSubmit(formData),
-            validateFormInput: (formInput: HTMLInputElement) => this.handleFormInputValidate(formInput),
+            onSubmit: (e) => this.handleSubmit(e),
+            validateFormInput: (e) => this.handleFormInputValidate(e),
           },
         ),
       }),
@@ -44,15 +42,13 @@ export default class Register extends Block<RegisterProps> {
   }
 
   handleSubmit(formData: FormData) {
-    const data = {
-      login: formData.get('login'),
-      email: formData.get('email'),
-      first_name: formData.get('first_name'),
-      phone: formData.get('phone'),
-      password: formData.get('password'),
-    };
-    console.log(data);
-    this.router.go(AppRoutes.LOGIN);
+    const data: Record<string, unknown> = {};
+
+    getFormKeys(formElementsDefinition).forEach((formKey) => {
+      data[formKey] = formData.get(formKey) as string;
+    });
+
+    AuthController.register(<AuthItem>data);
   }
 
   handleFormInputValidate(formInput: HTMLInputElement): boolean {
@@ -64,3 +60,11 @@ export default class Register extends Block<RegisterProps> {
     return true;
   }
 }
+
+function mapStateToProps(state: IState) {
+  return {
+    currentUser: state.currentUser,
+  };
+}
+
+export default connect(Register, mapStateToProps);

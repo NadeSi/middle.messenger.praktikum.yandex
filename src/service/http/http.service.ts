@@ -1,4 +1,5 @@
 import {CallMethodType, IHttpOptions, queryStringify} from './http.helper';
+import {tryParseJSON} from '../../utils/helpers/tryParseJSON';
 
 export class HttpService {
   get = (url: string, options: IHttpOptions = {}) => {
@@ -6,23 +7,24 @@ export class HttpService {
     if (data) {
       url += queryStringify(data);
     }
-    return this.request(url, {...options, method: CallMethodType.GET}, options.timeout);
+    return this.fetch(url, {...options, method: CallMethodType.GET}, options.timeout);
   };
 
   put = (url: string, options: IHttpOptions = {}) => {
-    return this.request(url, {...options, method: CallMethodType.PUT}, options.timeout);
+    return this.fetch(url, {...options, method: CallMethodType.PUT}, options.timeout);
   };
 
   post = (url: string, options: IHttpOptions = {}) => {
-    return this.request(url, {...options, method: CallMethodType.POST}, options.timeout);
+    return this.fetch(url, {...options, method: CallMethodType.POST}, options.timeout);
   };
 
   delete = (url: string, options: IHttpOptions = {}) => {
-    return this.request(url, {...options, method: CallMethodType.DELETE}, options.timeout);
+    return this.fetch(url, {...options, method: CallMethodType.DELETE}, options.timeout);
   };
 
   request = (url: string, options: IHttpOptions, timeout = 5000) => {
-    const {method, data = {}, headers} = options;
+    const {method, data = JSON.stringify({}), headers} = options;
+    // const {method, data = {}, headers} = options;
 
     return new Promise((resolve, reject) => {
       if (!method) {
@@ -37,6 +39,7 @@ export class HttpService {
       if (headers) {
         Object.entries(headers).forEach(([key, value]) => xhr.setRequestHeader(key, value));
       }
+      xhr.withCredentials = true;
 
       xhr.onload = function () {
         resolve(xhr);
@@ -50,5 +53,38 @@ export class HttpService {
 
       xhr.send(data);
     });
+  };
+
+  fetch(url: string, options: IHttpOptions, timeout = 5000) {
+    try {
+      const response = this.request(url, options, timeout);
+
+      return response.then(this.handleResponse, this.handleError);
+    } catch (e) {
+      return this.handleError(e);
+    }
+  }
+
+  handleResponse = (response: any) => {
+    try {
+      if (response && response.status === 200) {
+        // if (data && data.downloadFile) {
+        //   return await downloadFileFromStream(response, data);
+        // } else {
+        return Promise.resolve(tryParseJSON(response.response));
+        // }
+      }
+      return this.handleError(response);
+    } catch (e) {
+      return this.handleError(e);
+    }
+  };
+
+  handleError = (error: any) => {
+    if (error && error.response) {
+      const err = JSON.parse(error.response);
+      return Promise.reject(err?.reason || err);
+    }
+    return Promise.reject(error);
   };
 }

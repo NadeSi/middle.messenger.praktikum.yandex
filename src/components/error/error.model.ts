@@ -1,4 +1,4 @@
-import LinkComponent from '../link';
+import LinkComponent from '../common/link';
 
 export interface IErrorProps {
   statusCode: string;

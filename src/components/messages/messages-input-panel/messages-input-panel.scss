@@ -1,6 +1,6 @@
 @import "../../../styles/variables";
 
-$iconFolder: '../../../styles/icons';
+$iconFolder: "../../../styles/icons";
 
 .messages-input-panel {
 
@@ -14,29 +14,17 @@ $iconFolder: '../../../styles/icons';
   gap: 10px;
 }
 
-.button-add-file {
-  $size: 32px;
-
-  width: $size;
-  height: $size;
-
-  .icon-add-file {
-
-    background-image: url("#{$iconFolder}/clip.svg");
-  }
-}
-
-.button-send {
+.button-send-message {
   $size: 28px;
 
-  width: $size;
-  height: $size;
+  min-width: $size;
+  min-height: $size;
 
-  border-radius: 50%;
   background-color: $blue-color;
 
-  .icon-send {
+  .icon {
 
-    background-image: url("#{$iconFolder}/arrow.svg");
+    width: 70%;
+    height: 90%;
   }
 }

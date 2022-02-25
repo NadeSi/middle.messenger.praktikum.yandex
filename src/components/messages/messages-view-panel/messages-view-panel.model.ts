@@ -1,8 +1,12 @@
 import MessageItemComponent from '../message-item';
+import {MessageItem} from '../../../models/chat';
 
-export interface IMessagesViewPanelProps {
-  messageDateGroup: {
-    date: string;
-    messageItemList: MessageItemComponent[];
-  }[];
-}
+type MessagesViewPanelInnerProps = {
+  messageItemList?: MessageItemComponent[];
+};
+
+export type MessagesViewPanelOuterProps = {
+  messageList: MessageItem[];
+};
+
+export type MessagesViewPanelProps = MessagesViewPanelInnerProps & MessagesViewPanelOuterProps;

@@ -1,91 +1,104 @@
-import {IInputType} from '../../components/input';
-import ButtonCancelComponent from '../../components/button/button-cancel';
-import FormComponent from '../../components/form';
-import {IFormElementsDefinition} from '../../components/form/form.model';
+import {IInputType} from '../../components/common/input';
+import ButtonComponent from '../../components/common/button/button';
+import ButtonCancelComponent from '../../components/common/button/button-cancel';
+import AvatarComponent from '../../components/common/avatar';
+import FormComponent, {IFormElementsDefinition} from '../../components/form';
 import {FORM_VALIDATE_PATTERNS} from '../../utils/validation';
-import LinkComponent from '../../components/link';
+import {CurrentUserItem, CurrentUserPasswordItem} from '../../models/auth';
 
-export type SettingProps = {
-  avatar: string;
-  oldPassword: string;
-  newPassword: string;
-  changeInfoLink: LinkComponent;
-  changePasswordLink: LinkComponent;
-  exitLink: LinkComponent;
-  display_name: string;
-  form: FormComponent;
+export type SettingConnectProps = {
+  currentUser?: CurrentUserItem;
+};
+
+type SettingInnerProps = SettingConnectProps & {
+  isViewMode: boolean;
+  avatarElement: AvatarComponent;
+  buttonChangeInfo: ButtonComponent;
+  buttonChangePassword: ButtonComponent;
+  buttonExit: ButtonComponent;
+  form?: FormComponent;
   buttonCancel: ButtonCancelComponent;
 };
 
-export type SettingEditProps = {
-  form: FormComponent;
-  buttonCancel: ButtonCancelComponent;
+export type SettingOuterProps = SettingConnectProps & {
+  settingsFormElementsDef: IFormElementsDefinition[];
+  buttonSubmitText?: string;
+  isViewMode?: boolean;
 };
 
-export const settingsFormElementsDef: IFormElementsDefinition[] = [
-  {
-    name: 'display_name',
-    label: 'Имя в чате',
-    type: IInputType.text,
-    value: 'display_name',
-  },
+export type SettingProps = SettingInnerProps &
+  SettingOuterProps & {
+    formKeys: string[];
+  };
+
+export const settingsViewFormElementsDef: IFormElementsDefinition<CurrentUserItem>[] = [
   {
     name: 'first_name',
     label: 'Имя',
     type: IInputType.text,
-    value: 'FirstName',
+    value: '',
     validatePattern: FORM_VALIDATE_PATTERNS.USER_NAME,
   },
   {
     name: 'second_name',
     label: 'Фамилия',
     type: IInputType.text,
-    value: 'SecondName',
+    value: '',
     validatePattern: FORM_VALIDATE_PATTERNS.USER_NAME,
   },
   {
     name: 'login',
     label: 'Логин',
     type: IInputType.text,
-    value: 'login',
+    value: '',
     validatePattern: FORM_VALIDATE_PATTERNS.LOGIN,
   },
   {
     name: 'email',
     label: 'Почта',
     type: IInputType.text,
-    value: 'email@email.com',
+    value: '',
     validatePattern: FORM_VALIDATE_PATTERNS.EMAIL,
   },
   {
     name: 'phone',
     label: 'Телефон',
     type: IInputType.text,
-    value: '1234567890123',
+    value: '',
     validatePattern: FORM_VALIDATE_PATTERNS.PHONE_NUMBER,
   },
 ];
 
-export const settingsPasswordsFormElementsDef: IFormElementsDefinition[] = [
+export const settingsEditFormElementsDef: IFormElementsDefinition<CurrentUserItem>[] = [
+  {
+    name: 'display_name',
+    label: 'Имя в чате',
+    type: IInputType.text,
+    value: '',
+  },
+  ...settingsViewFormElementsDef,
+];
+
+export const settingsPasswordsFormElementsDef: IFormElementsDefinition<CurrentUserPasswordItem>[] = [
   {
     name: 'oldPassword',
     label: 'Старый пароль',
     type: IInputType.password,
-    value: 'Passw0rd',
+    value: '',
     validatePattern: FORM_VALIDATE_PATTERNS.PASSWORD,
   },
   {
     name: 'newPassword',
     label: 'Новый пароль',
     type: IInputType.password,
-    value: 'Passw0rd',
+    value: '',
     validatePattern: FORM_VALIDATE_PATTERNS.PASSWORD,
   },
   {
     name: 'newPasswordCopy',
     label: 'Повторите новый пароль',
     type: IInputType.password,
-    value: 'Passw0rd',
+    value: '',
     validatePattern: FORM_VALIDATE_PATTERNS.PASSWORD,
   },
 ];

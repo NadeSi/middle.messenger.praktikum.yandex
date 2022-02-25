@@ -1,8 +1,8 @@
 import Handlebars from 'handlebars';
 import Block from './block';
 
-export class Component extends Block {
-  constructor(componentName: string, template: string, props: any) {
+export class Component<T extends Record<string, unknown> = any> extends Block<T> {
+  constructor(componentName: string, template: string, props: T) {
     super(`${componentName}-component`, template, props);
   }
 

@@ -71,4 +71,8 @@ export default class Router {
   getRoute(pathname: string) {
     return this.routes.find((route) => route.match(pathname));
   }
+
+  getCurrentRoute = () => {
+    return this._currentRoute?.getPath();
+  };
 }

@@ -1,6 +1,5 @@
 import Block from '../block';
 import {displayPage} from '../../utils/display-page';
-import isEqual from '../../utils/helpers/isEqual';
 import {BlockType, RouteProps} from './router.model';
 
 export default class Route {
@@ -30,7 +29,11 @@ export default class Route {
   }
 
   match(pathname: string) {
-    return isEqual(this._pathname, '*') || isEqual(pathname, this._pathname);
+    return this._pathname === '*' || pathname === this._pathname;
+  }
+
+  getPath() {
+    return this._pathname;
   }
 
   render() {

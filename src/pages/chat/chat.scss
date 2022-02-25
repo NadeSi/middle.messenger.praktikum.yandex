@@ -7,16 +7,4 @@
   flex-direction: row;
   align-content: center;
   justify-content: center;
-
-  .messages-panel {
-
-    height: 100%;
-    width: 100%;
-    padding: 0 20px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-content: stretch;
-  }
 }

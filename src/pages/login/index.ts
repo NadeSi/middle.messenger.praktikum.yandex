@@ -1,15 +1,19 @@
-import Block from '../../modules/block';
-import {LoginProps, formElementsDefinition} from './login.model';
+import {formElementsDefinition, LoginPageProps} from './login.model';
 import template from './login.tmpl';
 import AuthComponent from '../../components/auth';
-import InputComponent from '../../components/input';
-import FormComponent from '../../components/form';
+import FormComponent, {getFormKeys} from '../../components/form';
 import {validateFormInput} from '../../utils/validation';
-import LinkComponent from '../../components/link';
-import AppRoutes from '../../utils/app-routes';
+import LinkComponent from '../../components/common/link';
+import AppRoutes from '../../utils/app-router/app-routes';
 import Router from '../../modules/router/router';
+import {getFormValues} from '../../components/form';
+import {AuthController} from '../../controllers/auth';
+import {IState} from '../../modules/store';
+import connect from '../../modules/connect';
+import Page from '../../modules/page';
+import {AuthLoginItem} from '../../models/auth';
 
-export default class Login extends Block<LoginProps> {
+class Login extends Page<LoginPageProps> {
   router = Router.getInstance();
 
   constructor() {
@@ -24,15 +28,12 @@ export default class Login extends Block<LoginProps> {
           {
             formName: 'login-form',
             buttonSubmitText: 'Войти',
-            formInputs: formElementsDefinition.map((formElement) => {
-              return new InputComponent({
-                name: formElement.name,
-                label: formElement.label,
-                type: formElement.type,
-                value: formElement.value,
-                placeholder: formElement.placeholder,
-              });
+            formInputsModel: formElementsDefinition.map((formElement) => {
+              return {
+                ...formElement,
+              };
             }),
+            formInputValues: getFormValues(formElementsDefinition),
           },
           {
             onSubmit: (formData: FormData) => this.handleSubmit(formData),
@@ -44,12 +45,13 @@ export default class Login extends Block<LoginProps> {
   }
 
   handleSubmit(formData: FormData) {
-    const data = {
-      login: formData.get('login'),
-      password: formData.get('password'),
-    };
-    console.log(data);
-    this.router.go(AppRoutes.MESSENGER);
+    const data: Record<string, unknown> = {};
+
+    getFormKeys(formElementsDefinition).forEach((formKey) => {
+      data[formKey] = formData.get(formKey) as string;
+    });
+
+    AuthController.login(<AuthLoginItem>data);
   }
 
   handleFormInputValidate(formInput: HTMLInputElement): boolean {
@@ -61,3 +63,11 @@ export default class Login extends Block<LoginProps> {
     return true;
   }
 }
+
+function mapStateToProps(state: IState) {
+  return {
+    currentUser: state.currentUser,
+  };
+}
+
+export default connect(Login, mapStateToProps);

@@ -1,5 +1,5 @@
 import FormComponent from '../form';
-import LinkComponent from '../link';
+import LinkComponent from '../common/link';
 
 export interface IAuthProps {
   header: string;

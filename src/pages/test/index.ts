@@ -1,6 +1,6 @@
 import Block from '../../modules/block';
 import template from './test.tmpl';
-import AppRoutes from '../../utils/app-routes';
+import AppRoutes from '../../utils/app-router/app-routes';
 
 type TestPageType = {appRoutes: typeof AppRoutes};
 
