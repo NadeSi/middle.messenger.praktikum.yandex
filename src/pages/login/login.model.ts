@@ -1,27 +1,29 @@
 import AuthComponent from '../../components/auth';
-import {IFormElementsDefinition} from '../../components/form/form.model';
-import {IInputType} from '../../components/input';
+import {IFormElementsDefinition} from '../../components/form';
+import {IInputType} from '../../components/common/input';
 import {FORM_VALIDATE_PATTERNS} from '../../utils/validation';
+import {AuthLoginItem, CurrentUserItem} from '../../models/auth';
 
-export type LoginProps = {
+export type LoginPageProps = {
+  currentUser?: CurrentUserItem;
   authForm: AuthComponent;
 };
 
-export const formElementsDefinition: IFormElementsDefinition[] = [
+export const formElementsDefinition: IFormElementsDefinition<AuthLoginItem>[] = [
   {
     name: 'login',
     label: 'Логин',
-    value: 'login',
+    value: '',
     type: IInputType.text,
-    placeholder: 'Логин',
+    // placeholder: 'Логин',
     validatePattern: FORM_VALIDATE_PATTERNS.LOGIN,
   },
   {
     name: 'password',
     label: 'Пароль',
-    value: 'Passw0rd',
+    value: '',
     type: IInputType.text,
-    placeholder: 'Пароль',
+    // placeholder: 'Пароль',
     validatePattern: FORM_VALIDATE_PATTERNS.PASSWORD,
   },
 ];

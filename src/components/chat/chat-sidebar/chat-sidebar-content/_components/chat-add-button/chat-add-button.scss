@@ -1,0 +1,25 @@
+@import "../../../../../../styles/variables";
+
+.chat-add-button {
+  $offset: 1.9rem;
+  $size: 54px;
+
+  position: absolute;
+  right: $offset;
+  bottom: calc(#{$offset} - #{$offset} / 2);
+
+  padding: 0;
+  width: $size;
+  height: $size;
+
+  border-radius: 50%;
+  border: 1px solid $button-cancel-color;
+
+  background-color: $button-cancel-color;
+
+  .icon {
+
+    width: 50%;
+    height: 70%;
+  }
+}

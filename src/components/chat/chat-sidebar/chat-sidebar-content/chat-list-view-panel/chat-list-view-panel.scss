@@ -1,0 +1,15 @@
+@import "../../../../../styles/variables";
+
+.chat-panel {
+
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+
+  .sidebar-search-container {
+
+    margin: 10px 0;
+  }
+}

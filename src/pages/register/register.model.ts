@@ -1,60 +1,61 @@
 import AuthComponent from '../../components/auth';
-import {IFormElementsDefinition} from '../../components/form/form.model';
-import {IInputType} from '../../components/input';
+import {IFormElementsDefinition} from '../../components/form';
+import {IInputType} from '../../components/common/input';
 import {FORM_VALIDATE_PATTERNS} from '../../utils/validation';
+import {AuthItem} from '../../models/auth';
 
 export type RegisterProps = {
   authForm: AuthComponent;
 };
 
-export const formElementsDefinition: IFormElementsDefinition[] = [
+export const formElementsDefinition: IFormElementsDefinition<AuthItem>[] = [
   {
     name: 'login',
     label: 'Логин',
     type: IInputType.text,
-    value: 'login',
+    value: '',
     validatePattern: FORM_VALIDATE_PATTERNS.LOGIN,
   },
   {
     name: 'email',
     label: 'Почта',
     type: IInputType.text,
-    value: 'email@email.com',
+    value: '',
     validatePattern: FORM_VALIDATE_PATTERNS.EMAIL,
   },
   {
     name: 'first_name',
     label: 'Имя',
     type: IInputType.text,
-    value: 'FirstName',
+    value: '',
     validatePattern: FORM_VALIDATE_PATTERNS.USER_NAME,
   },
   {
     name: 'second_name',
     label: 'Фамилия',
     type: IInputType.text,
-    value: 'SecondName',
+    value: '',
     validatePattern: FORM_VALIDATE_PATTERNS.USER_NAME,
   },
   {
     name: 'phone',
     label: 'Телефон',
     type: IInputType.text,
-    value: '1234567890123',
+    value: '',
     validatePattern: FORM_VALIDATE_PATTERNS.PHONE_NUMBER,
   },
   {
     name: 'password',
     label: 'Пароль',
     type: IInputType.password,
-    value: 'Passw0rd',
+    value: '',
     validatePattern: FORM_VALIDATE_PATTERNS.PASSWORD,
   },
   {
-    name: 'password',
+    name: 'passwordCopy',
     label: 'Пароль (ещё раз)',
     type: IInputType.password,
-    value: 'Passw0rd',
+    value: '',
     validatePattern: FORM_VALIDATE_PATTERNS.PASSWORD,
   },
 ];

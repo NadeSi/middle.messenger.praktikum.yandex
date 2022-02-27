@@ -2,42 +2,13 @@
 
 .messages-top-panel {
 
-  height: 54px;
-  top: 0;
-
-  display: flex;
-  align-content: center;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
+  cursor: pointer;
 
   border-bottom: $border;
 
-  .avatar {
-
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background-color: $component-background-color;
-  }
-
-  .user-name {
+  .title {
 
     flex-grow: 1;
     text-align: left;
-  }
-
-  .button-context-menu {
-    $size: 20px;
-
-    width: $size;
-    height: $size;
-
-    border-radius: 50%;
-
-    .icon-context-menu {
-
-      background-image: url("./icons/ellipsis-v.svg");
-    }
   }
 }

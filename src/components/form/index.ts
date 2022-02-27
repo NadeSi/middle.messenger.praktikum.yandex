@@ -1,17 +1,45 @@
 import {Component} from '../../modules/component';
-import {IFormHandlers, IFormProps} from './form.model';
+import {FormProps, FormOuterProps, FormHandlers} from './form.model';
 import template from './form.tmpl';
+
+import InputComponent, {IInputProps} from '../common/input';
+import isEqual from '../../utils/helpers/isEqual';
 
 import './form.scss';
 
-class FormComponent extends Component {
-  handlers: IFormHandlers;
+class FormComponent extends Component<FormProps> {
+  handlers: FormHandlers;
 
-  constructor(props: IFormProps, handlers: IFormHandlers) {
+  constructor(props: FormOuterProps, handlers: FormHandlers) {
     super('form', template, props);
+
+    this.props.formInputs = this.props.formInputsModel.map((formElement: IInputProps) => {
+      const value =
+        this.props.formInputValues && this.props.formInputValues[formElement.name]
+          ? this.props.formInputValues[formElement.name]
+          : formElement.value;
+      return new InputComponent({...formElement, value});
+    });
 
     this.handlers = handlers;
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidUpdate(oldProps: FormProps, newProps: FormProps) {
+    if (!isEqual(oldProps.formInputValues, newProps.formInputValues)) {
+      //TODO не перерерисовывать полностью
+      this.setProps({
+        formInputs: this.props.formInputsModel.map((formElement: IInputProps) => {
+          const value =
+            this.props.formInputValues && this.props.formInputValues[formElement.name]
+              ? this.props.formInputValues[formElement.name]
+              : formElement.value;
+          return new InputComponent({...formElement, value});
+        }),
+      });
+    }
+
+    return true;
   }
 
   handleSubmit(event: Event) {
@@ -44,11 +72,11 @@ class FormComponent extends Component {
 
   afterRender = (parentElement: HTMLElement) => {
     const formElements: HTMLFormElement = parentElement?.getElementsByTagName('form')[0];
-    const formInputs = formElements.getElementsByTagName('input');
+    const formInputs = formElements?.getElementsByTagName('input');
 
-    this.handleSubmit && formElements.addEventListener('submit', this.handleSubmit.bind(this));
+    this.handleSubmit && formElements && formElements.addEventListener('submit', this.handleSubmit.bind(this));
 
-    if (this.handleValidateInput) {
+    if (this.handleValidateInput && formInputs) {
       for (let i = 0; i < formInputs.length; i++) {
         formInputs[i].addEventListener('blur', (event: FocusEvent) =>
           this.handleValidateInput(event.target as HTMLInputElement),
@@ -61,4 +89,5 @@ class FormComponent extends Component {
   };
 }
 
+export {IFormElementsDefinition, getFormKeys, getFormValues} from './form.model';
 export default FormComponent;

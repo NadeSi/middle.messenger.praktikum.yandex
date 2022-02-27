@@ -1,57 +1,32 @@
-import Block from '../../../modules/block';
-import {displayPage} from '../../../utils/display-page';
-import {SettingEditProps, settingsFormElementsDef} from '../setting.model';
-import template from './settings-edit.tmpl';
-import InputComponent from '../../../components/input';
-import ButtonCancelComponent from '../../../components/button/button-cancel';
-import FormComponent from '../../../components/form';
-import {validateFormInput} from '../../../utils/validation';
+import Settings, {mapStateToProps} from '../settings-common';
+import AppRoutes from '../../../utils/app-router/app-routes';
+import {SettingConnectProps, SettingOuterProps, settingsEditFormElementsDef} from '../setting.model';
+import connect from '../../../modules/connect';
+import UserController from '../../../controllers/user/user.controller';
+import {UserItem} from '../../../models/user';
 
-export class SettingsEdit extends Block<SettingEditProps> {
-  constructor() {
-    super('page-settings-edit', template, {
-      buttonCancel: new ButtonCancelComponent(),
-      form: new FormComponent(
-        {
-          formName: 'settings-edit-form',
-          buttonSubmitText: 'Сохранить',
-          formInputs: settingsFormElementsDef.map((formElement) => {
-            return new InputComponent({
-              name: formElement.name,
-              label: formElement.label,
-              type: formElement.type,
-              value: formElement.value,
-              placeholder: formElement.placeholder,
-            });
-          }),
-        },
-        {
-          onSubmit: (formData: FormData) => this.handleSubmit(formData),
-          validateFormInput: (formInput: HTMLInputElement) => this.handleFormInputValidate(formInput),
-        },
-      ),
-    });
+class SettingsEdit extends Settings<SettingOuterProps> {
+  constructor(connectProps: SettingConnectProps) {
+    super({...connectProps, settingsFormElementsDef: settingsEditFormElementsDef, buttonSubmitText: 'Сохранить'});
   }
 
-  handleSubmit(formData: FormData) {
+  handleClickCancel() {
+    this.handleRoute(AppRoutes.SETTINGS);
+  }
+
+  handleFormSubmit(formData: FormData) {
     const data: Record<string, unknown> = {};
 
-    settingsFormElementsDef.forEach((item) => {
-      data[item.name] = formData.get(item.name);
+    this.props.formKeys.forEach((formKey) => {
+      data[formKey] = formData.get(formKey) as string;
     });
 
-    console.log(data);
-  }
-
-  handleFormInputValidate(formInput: HTMLInputElement): boolean {
-    const formElement = settingsFormElementsDef.find((formElement) => formElement.name === formInput.name);
-
-    if (formElement?.validatePattern) {
-      return validateFormInput(formElement.validatePattern, formInput);
-    }
-    return true;
+    UserController.changeUserProfile(<UserItem>data)
+      .then(() => {
+        this.handleClickCancel();
+      })
+      .catch((e) => console.log(e));
   }
 }
 
-const page = new SettingsEdit();
-displayPage(page);
+export default connect(SettingsEdit, mapStateToProps);

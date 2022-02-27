@@ -1,20 +1,56 @@
 import {Component} from '../../../modules/component';
-import {IMessagesInputPanelHandlers, IMessagesInputPanelProps} from './messages-input-panel.model';
+import {MessagesInputPanelHandlers, MessagesInputPanelProps} from './messages-input-panel.model';
 import template from './messages-input-panel.tmpl';
+
+import InputComponent, {IInputType} from '../../common/input';
+import ButtonIconComponent from '../../common/button/button-icon';
 
 import './messages-input-panel.scss';
 
-class MessagesInputPanelComponent extends Component {
-  handlers: IMessagesInputPanelHandlers;
+class MessagesInputPanelComponent extends Component<MessagesInputPanelProps> {
+  handlers: MessagesInputPanelHandlers;
 
-  constructor(props: IMessagesInputPanelProps, handlers: IMessagesInputPanelHandlers) {
-    super('messages-input-panel', template, props);
+  constructor(props: Record<string, never>, handlers: MessagesInputPanelHandlers) {
+    super('messages-input-panel', template, {
+      ...props,
+      buttonAddFile: new ButtonIconComponent(
+        {
+          name: 'button-add-file',
+          icon: 'icon-resource',
+        },
+        {
+          onClick: (e) => this.handleClickAddFile(e),
+        },
+      ),
+      inputMessage: new InputComponent({
+        name: 'message',
+        type: IInputType.text,
+        value: '',
+        placeholder: 'Написать сообщение...',
+      }),
+      buttonSend: new ButtonIconComponent(
+        {
+          name: 'button-send-message',
+          icon: 'icon-send',
+          className: 'button-send-message',
+        },
+        {
+          onClick: (e) => this.handleClickButtonSend(e),
+        },
+      ),
+    });
 
     this.handlers = handlers;
+    this.handleClickAddFile = this.handleClickAddFile.bind(this);
+    this.handleClickButtonSend = this.handleClickButtonSend.bind(this);
   }
 
-  handleClickButtonSend(event: Event) {
-    event.preventDefault();
+  handleClickAddFile(event?: Event) {
+    //event.preventDefault();
+  }
+
+  handleClickButtonSend(event?: Event) {
+    event && event.preventDefault();
 
     const messageInputElement: HTMLInputElement | undefined = document
       .querySelector('.messages-input-panel')
@@ -22,14 +58,11 @@ class MessagesInputPanelComponent extends Component {
 
     if (messageInputElement?.value) {
       this.handlers.onSendMessage && this.handlers.onSendMessage(messageInputElement.value);
+
+      messageInputElement.value = '';
     }
   }
-
-  afterRender = (parentElement: HTMLElement) => {
-    const buttonSendElement: Element = parentElement?.getElementsByClassName('button-send')[0];
-
-    buttonSendElement.addEventListener('click', this.handleClickButtonSend.bind(this));
-  };
 }
 
+export {MessagesInputPanelHandlers};
 export default MessagesInputPanelComponent;
