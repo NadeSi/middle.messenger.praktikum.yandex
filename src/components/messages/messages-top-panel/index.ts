@@ -23,8 +23,8 @@ class MessagesTopPanelComponent extends Component<MessagesTopPanelProps> {
   }
 
   afterRender = (parentElement: HTMLElement) => {
-    const title: Element = parentElement?.getElementsByClassName('title')[0];
-    title && title.addEventListener('click', this.handleClickHeader.bind(this));
+    const header: Element = parentElement?.getElementsByClassName('messages-top-panel')[0];
+    header && header.addEventListener('click', this.handleClickHeader.bind(this));
   };
 
   componentDidUpdate(oldProps: MessagesTopPanelProps, newProps: MessagesTopPanelProps): boolean {
