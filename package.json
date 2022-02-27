@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "dev": "./node_modules/.bin/parcel static/index.html",
-    "build": "./node_modules/.bin/parcel build static/index.html",
+    "build": "./node_modules/.bin/parcel build static/*",
     "start": "npm run build && node ./express.js",
     "lint": "eslint src/.",
     "lint-css": "stylelint src/**/*.scss",
