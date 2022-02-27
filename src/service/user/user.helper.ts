@@ -12,8 +12,6 @@ export interface IUserItemApi extends IUserUpdateApi {
   id: number;
 }
 
-//////////////////////////////
-
 export interface IUserPasswordApi {
   oldPassword: string;
   newPassword: string;

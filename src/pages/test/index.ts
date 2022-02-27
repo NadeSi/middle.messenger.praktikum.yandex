@@ -1,4 +1,4 @@
-import Block from '../../modules/block';
+import Block from '../../modules/block/block';
 import template from './test.tmpl';
 import AppRoutes from '../../utils/app-router/app-routes';
 

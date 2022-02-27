@@ -1,4 +1,4 @@
-import Block from '../block';
+import Block from '../block/block';
 import {displayPage} from '../../utils/display-page';
 import {BlockType, RouteProps} from './router.model';
 

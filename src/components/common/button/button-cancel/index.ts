@@ -17,7 +17,6 @@ class ButtonCancelComponent extends Component<ButtonCancelProps> {
         {
           name: 'button-cancel',
           icon: 'icon-back',
-          //className: 'button-cancel',
         },
         {
           onClick: (e) => this.handlers.onClick && this.handlers.onClick(e),
@@ -26,7 +25,6 @@ class ButtonCancelComponent extends Component<ButtonCancelProps> {
     });
 
     this.handlers = handlers;
-    // this.handleClick = this.handleClick.bind(this);
   }
 }
 

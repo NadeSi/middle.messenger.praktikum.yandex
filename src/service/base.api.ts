@@ -15,33 +15,9 @@ export abstract class BaseAPI {
   protected constructor(options: IBaseApiOptions) {
     this._baseUrl = HOST.concat(options.baseUrl);
     this._headers = {
+      'Content-Security-Policy': `default-src 'self'; img-src *; media-src https://ya-praktikum.tech`,
       'Content-Type': 'application/json',
     };
     this._http = new HttpService();
   }
-
-  // callApi(url: string, init = {}) {
-  //   return this._http(`${this._baseUrl}${url}`, init).then((res) => {
-  //     if (res.ok) {
-  //       return res.json();
-  //     }
-  //     return Promise.reject(`Ошибка: ${res.status}`);
-  //   });
-  // }
-
-  // create() {
-  //   throw new Error('Not implemented');
-  // }
-  //
-  // request() {
-  //   throw new Error('Not implemented');
-  // }
-  //
-  // update() {
-  //   throw new Error('Not implemented');
-  // }
-  //
-  // delete() {
-  //   throw new Error('Not implemented');
-  // }
 }

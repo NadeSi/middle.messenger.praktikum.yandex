@@ -68,11 +68,7 @@ export class HttpService {
   handleResponse = (response: any) => {
     try {
       if (response && response.status === 200) {
-        // if (data && data.downloadFile) {
-        //   return await downloadFileFromStream(response, data);
-        // } else {
         return Promise.resolve(tryParseJSON(response.response));
-        // }
       }
       return this.handleError(response);
     } catch (e) {

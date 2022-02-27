@@ -18,7 +18,6 @@ export type ChatUsersPanelOuterProps = {
 export type ChatUsersPanelProps = ChatUsersPanelInnerProps & ChatUsersPanelOuterProps;
 
 export type ChatUsersPanelHandlers = {
-  //onSearchUsers(userLogin: string): void;
   onAddUsersToChat(id: number): void;
   onClosePanel(event?: Event): void;
 };

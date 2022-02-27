@@ -13,7 +13,6 @@ import {MessageDataApi} from '../../service/chat-websocket/chat-websocket.helper
 import {IState} from '../../modules/store';
 import {formatList} from '../../models/common';
 import {MessageItem} from '../../models/message';
-import {IUserItemApi} from '../../service/user/user.helper';
 
 export type ChatCreateData = IChatCreateDataApi;
 

@@ -25,5 +25,5 @@ class ChatSidebarComponent extends Component<ChatSidebarProps> {
   }
 }
 
-export type {ChatSidebarProps, ChatSidebarOuterProps};
+export {ChatSidebarProps, ChatSidebarOuterProps};
 export default ChatSidebarComponent;

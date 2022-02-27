@@ -14,10 +14,10 @@ import isEqual from '../../../../../utils/helpers/isEqual';
 import store from '../../../../../modules/store/store';
 import {ChatItem} from '../../../../../models/chat';
 import {ChatsController} from '../../../../../controllers/chats';
-
-import './chat-list-view-panel.scss';
 import ChatItemListComponent from '../_components/chat-item-list';
 import ChatAddButtonComponent from '../_components/chat-add-button';
+
+import './chat-list-view-panel.scss';
 
 class ChatListViewPanelComponent extends Component<ChatListViewPanelProps> {
   router = Router.getInstance();

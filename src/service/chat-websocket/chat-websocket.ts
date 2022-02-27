@@ -19,7 +19,7 @@ export class ChatWebSocket {
   };
 
   private onOpen = () => {
-    console.log('Соединение установлено');
+    //console.log('Соединение установлено');
     this.timerId = setInterval(() => this.ping(), 30000);
 
     this.getMessages();
@@ -27,12 +27,12 @@ export class ChatWebSocket {
 
   private onClose = (event: CloseEvent) => {
     if (event.wasClean) {
-      console.log('Соединение закрыто чисто');
+      //console.log('Соединение закрыто чисто');
     } else {
-      console.log('Обрыв соединения');
+      //console.log('Обрыв соединения');
     }
 
-    console.log(`Код: ${event.code} | Причина: ${event.reason}`);
+    //console.log(`Код: ${event.code} | Причина: ${event.reason}`);
     clearInterval(this.timerId);
   };
 
@@ -42,10 +42,9 @@ export class ChatWebSocket {
 
   private onMessage = (event: MessageEvent) => {
     const data = JSON.parse(event.data);
-    console.log('Получены данные', data);
+    //console.log('Получены данные', data);
 
     if (Array.isArray(data) || (data.type && isMessageType(data.type))) {
-      console.log(data.type);
       ChatsController.refreshChatMessages(data);
     }
   };

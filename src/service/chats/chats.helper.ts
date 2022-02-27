@@ -47,7 +47,3 @@ export interface IChatModifyUsersApi {
 export interface IChatTokenApi {
   token: string;
 }
-
-// export interface IChatGetUsersFilterApi extends IChatPaging {
-//   id: number;
-// }

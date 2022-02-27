@@ -17,5 +17,4 @@ export type NewChatAddPanelProps = NewChatAddPanelInnerProps & NewChatAddPanelOu
 
 export type NewChatAddPanelHandlers = {
   onClickCancel: ButtonIconHandlers['onClick'];
-  //onClickAddChat(title: string): void;
 };

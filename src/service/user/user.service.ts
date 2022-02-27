@@ -1,6 +1,5 @@
-import {BaseAPI, IBaseApiOptions} from '../base.api';
+import {BaseAPI} from '../base.api';
 import {IUserItemApi, IUserPasswordApi, IUserUpdateApi} from './user.helper';
-import {IChatUpdateAvatarApi, IChatUserItemApi} from '../chats/chats.helper';
 
 export class UserService extends BaseAPI {
   constructor() {
@@ -9,26 +8,20 @@ export class UserService extends BaseAPI {
 
   getUserInfo(id: number): Promise<IUserItemApi> {
     return this._http.get(`${this._baseUrl}/${id}`, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: this._headers,
     });
   }
 
   setUserPassword(data: IUserPasswordApi) {
     return this._http.put(`${this._baseUrl}/password`, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: this._headers,
       data: JSON.stringify(data),
     });
   }
 
   searchUsers(login: string): Promise<IUserItemApi[]> {
     return this._http.post(`${this._baseUrl}/search`, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: this._headers,
       data: JSON.stringify({login}),
     });
   }
@@ -36,9 +29,7 @@ export class UserService extends BaseAPI {
   /** profile */
   setUserInfo(data: IUserUpdateApi): Promise<IUserItemApi> {
     return this._http.put(`${this._baseUrl}/profile`, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: this._headers,
       data: JSON.stringify(data),
     });
   }

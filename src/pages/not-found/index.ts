@@ -1,4 +1,3 @@
-import Block from '../../modules/block';
 import {NotFoundProps} from './not-found.model';
 import template from './not-found.tmpl';
 import ErrorComponent from '../../components/error';

@@ -5,12 +5,10 @@ import template from './chat-users-panel.tmpl';
 import isEqual from '../../../../../utils/helpers/isEqual';
 import ButtonIconComponent from '../../../../common/button/button-icon';
 import InputComponent, {IInputType} from '../../../../common/input';
-import ChatItemComponent from '../_components/chat-item';
+import {UserController} from '../../../../../controllers/user';
+import ChatItemListComponent from '../_components/chat-item-list';
 
 import './chat-users-panel.scss';
-import {UserController} from '../../../../../controllers/user';
-import {ChatsController} from '../../../../../controllers/chats';
-import ChatItemListComponent from '../_components/chat-item-list';
 
 class ChatUsersPanelComponent extends Component<ChatUsersPanelProps> {
   handlers: ChatUsersPanelHandlers;

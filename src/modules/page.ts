@@ -1,4 +1,4 @@
-import Block from './block';
+import Block from './block/block';
 import appRouteTransitions from '../utils/app-router/app-route-transitions';
 import isEqual from '../utils/helpers/isEqual';
 import {CurrentUserItem} from '../models/auth';

@@ -1,4 +1,4 @@
 //language=hbs
 export default `
-    <a href={{href}}>{{text}}</a>
+    <a class='link' href={{href}}>{{text}}</a>
 `;

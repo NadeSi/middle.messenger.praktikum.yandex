@@ -1,5 +1,5 @@
 import Handlebars from 'handlebars';
-import Block from './block';
+import Block from './block/block';
 
 export class Component<T extends Record<string, unknown> = any> extends Block<T> {
   constructor(componentName: string, template: string, props: T) {

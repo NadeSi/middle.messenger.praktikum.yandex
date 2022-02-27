@@ -26,7 +26,6 @@ export class AuthService extends BaseAPI {
     });
   }
 
-  //TODO нужно ли?
   getUser() {
     return this._http.get(`${this._baseUrl}/user`, {
       headers: this._headers,

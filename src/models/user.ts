@@ -1,4 +1,3 @@
-//TODO мб быть не нужно?
 export type UserItem = {
   id: number;
   login: string;

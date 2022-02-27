@@ -1,5 +1,5 @@
 import MessageItemComponent from '../message-item';
-import {MessageItem} from '../../../models/chat';
+import {MessageItem} from '../../../models/message';
 
 type MessagesViewPanelInnerProps = {
   messageItemList?: MessageItemComponent[];

@@ -34,7 +34,6 @@ class ChatSidebarLeftComponent extends ChatSidebarComponent {
         userList: [],
       },
       {
-        //onSearchUsers: (e) => this.handlers.handleSearchUsers && this.handlers.handleSearchUsers(e),
         onAddUsersToChat: (e) => this.handleAddUsersToChat(e),
         onClosePanel: (e) => this.handleChangeSidebarMode(ChatSidebarMode.CHAT_INFO_VIEW),
       },
@@ -49,7 +48,6 @@ class ChatSidebarLeftComponent extends ChatSidebarComponent {
     }
 
     if (!isEqual(oldProps.activeChat, newProps.activeChat)) {
-      console.log('activeChat', this.props.activeChat);
       this.refreshChatInfoViewPanel(newProps.activeChat);
     }
 

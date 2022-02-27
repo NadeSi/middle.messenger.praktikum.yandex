@@ -21,13 +21,12 @@ const appRouteTransitions = () => {
 
   const routeTransitions = () => {
     const currentUser = AuthController.getCurrentUser();
-    debugger;
     if (currentUser && (isAuthenticatedRoutes || isHomeRoute)) {
-      console.log('AuthenticatedRoutes router go to MESSENGER');
+      //console.log('AuthenticatedRoutes router go to MESSENGER');
       router.go(AppRoutes.MESSENGER);
     }
     if (!currentUser && (isProtectedRoute || isHomeRoute)) {
-      console.log('ProtectedRoute router go to LOGIN');
+      //console.log('ProtectedRoute router go to LOGIN');
       router.go(AppRoutes.LOGIN);
     }
   };

@@ -1,13 +1,10 @@
 import store from '../../modules/store/store';
 import {AuthService} from '../../service/auth/auth.service';
 import {UserService} from '../../service/user/user.service';
-import {IAuthApiData} from '../../service/auth/auth.helper';
 import {IUserItemApi, IUserPasswordApi, IUserUpdateApi} from '../../service/user/user.helper';
 import {UserItem} from '../../models/user';
-import {ChatItemProps} from '../../components/chat/chat-sidebar/chat-sidebar-content/_components/chat-item/chat-item.model';
-import {ChatItem, formatChatItem, formatChatUserItem} from '../../models/chat';
+import {ChatItem, formatChatUserItem} from '../../models/chat';
 import {formatList} from '../../models/common';
-import {IChatItemApi} from '../../service/chats/chats.helper';
 
 export type UserData = IUserItemApi;
 
@@ -16,10 +13,6 @@ export type UserPasswordData = IUserPasswordApi;
 class UserController {
   constructor(private authService = new AuthService(), private userService = new UserService()) {
     //
-  }
-
-  public getUserById(id: number) {
-    // this.userService.getUserInfo(id).then((data) => store.set('user', data));
   }
 
   public changeUserAvatar(file: File) {

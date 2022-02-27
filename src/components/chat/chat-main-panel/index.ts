@@ -4,13 +4,11 @@ import template from './chat-main-panel.tmpl';
 
 import MessagesTopPanelComponent from '../../messages/messages-top-panel';
 import MessagesViewPanelComponent from '../../messages/messages-view-panel';
-import MessageItemComponent from '../../messages/message-item';
 import MessagesInputPanelComponent from '../../messages/messages-input-panel';
-import InputComponent, {IInputType} from '../../common/input';
 import isEqual from '../../../utils/helpers/isEqual';
+import store from '../../../modules/store/store';
 
 import './chat-main-panel.scss';
-import store from '../../../modules/store/store';
 
 class ChatChatMainPanelComponent extends Component<ChatMainPanelProps> {
   handlers: ChatMainPanelHandlers = {};

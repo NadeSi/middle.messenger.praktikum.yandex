@@ -7,8 +7,6 @@ type MessagesInputPanelInnerProps = {
   buttonSend: ButtonIconComponent;
 };
 
-//export type MessagesInputPanelOuterProps = Record<string, never>;
-
 export type MessagesInputPanelProps = MessagesInputPanelInnerProps;
 
 export type MessagesInputPanelHandlers = {

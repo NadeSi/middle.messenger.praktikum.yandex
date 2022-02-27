@@ -3,10 +3,10 @@ import {Component} from '../../../modules/component';
 import {MessageItemProps} from './message-item.model';
 import template from './message-item.tmpl';
 
-import './message-item.scss';
-import {UserController} from '../../../controllers/user';
 import {AuthController} from '../../../controllers/auth';
 import {getMessageDate} from '../../../utils/message-date';
+
+import './message-item.scss';
 
 class MessageItemComponent extends Component<MessageItemProps> {
   constructor(props: MessageItemProps) {

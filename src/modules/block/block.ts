@@ -1,5 +1,5 @@
 import Handlebars from 'handlebars';
-import EventBus from './event-bus';
+import EventBus from '../event-bus';
 
 type Meta<T extends Record<string, unknown>> = {
   tagName: string;
@@ -103,7 +103,7 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
 
     const block = this.render();
     if (block) {
-      if (isRerender) this._element?.replaceChildren(this.stringToElement(block));
+      if (isRerender) this._element?.replaceChildren(Block.stringToElement(block));
       else this._element?.insertAdjacentHTML('beforeend', block);
 
       this._afterRender();
@@ -186,7 +186,7 @@ export default abstract class Block<T extends Record<string, unknown> = any> {
     //
   }
 
-  private stringToElement(str: string) {
+  static stringToElement(str: string) {
     const parser = new DOMParser(),
       content = 'text/html',
       DOM = parser.parseFromString(str, content);

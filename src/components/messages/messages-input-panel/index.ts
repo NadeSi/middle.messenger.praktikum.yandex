@@ -45,11 +45,6 @@ class MessagesInputPanelComponent extends Component<MessagesInputPanelProps> {
     this.handleClickButtonSend = this.handleClickButtonSend.bind(this);
   }
 
-  afterRender = (parentElement: HTMLElement) => {
-    // const buttonSendElement: Element = parentElement?.getElementsByClassName('button-send')[0];
-    // buttonSendElement.addEventListener('click', this.handleClickButtonSend.bind(this));
-  };
-
   handleClickAddFile(event?: Event) {
     //event.preventDefault();
   }

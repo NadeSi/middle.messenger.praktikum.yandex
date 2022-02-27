@@ -2,7 +2,6 @@ import {Component} from '../../modules/component';
 import {FormProps, FormOuterProps, FormHandlers} from './form.model';
 import template from './form.tmpl';
 
-//import {getFormKeys, settingsFormElementsDef} from '../../pages/settings/setting.model';
 import InputComponent, {IInputProps} from '../common/input';
 import isEqual from '../../utils/helpers/isEqual';
 
@@ -28,7 +27,6 @@ class FormComponent extends Component<FormProps> {
 
   componentDidUpdate(oldProps: FormProps, newProps: FormProps) {
     if (!isEqual(oldProps.formInputValues, newProps.formInputValues)) {
-      //console.log('formInputValues:', oldProps.formInputValues, newProps.formInputValues);
       //TODO не перерерисовывать полностью
       this.setProps({
         formInputs: this.props.formInputsModel.map((formElement: IInputProps) => {

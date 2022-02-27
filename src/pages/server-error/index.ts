@@ -1,4 +1,3 @@
-import Block from '../../modules/block';
 import {ServerErrorProps} from './server-error.model';
 import template from './server-error.tmpl';
 import ErrorComponent from '../../components/error';

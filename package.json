@@ -9,7 +9,8 @@
     "start": "npm run build && node ./express.js",
     "lint": "eslint src/.",
     "lint-css": "stylelint src/**/*.scss",
-    "lint-fix": "eslint src/. --fix"
+    "lint-fix": "eslint src/. --fix",
+    "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -29,9 +30,20 @@
     "vendor": "^1.7.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@babel/register": "^7.17.0",
     "@inventory/parcel-plugin-handlebars": "^1.0.0",
+    "@types/chai": "^4.3.0",
+    "@types/jsdom-global": "^3.0.2",
+    "@types/mocha": "^9.1.0",
+    "@types/sinon": "^10.0.11",
+    "@types/xmldom": "^0.1.31",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
+    "chai": "^4.3.6",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-airbnb-typescript": "^14.0.1",
@@ -40,13 +52,18 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-prettier": "^4.0.0",
     "express": "^4.17.1",
+    "jsdom": "^19.0.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^9.2.1",
     "parcel-bundler": "^1.12.5",
     "prettier": "2.4.1",
     "sass": "^1.42.1",
+    "sinon": "^13.0.1",
     "stylelint": "^14.0.0",
     "stylelint-config-standard": "^23.0.0",
     "stylelint-config-standard-scss": "^2.0.0",
-    "typescript": "^4.4.4"
+    "typescript": "^4.4.4",
+    "xmldom": "^0.6.0"
   },
   "engines": {
     "node": ">=14.15.0"

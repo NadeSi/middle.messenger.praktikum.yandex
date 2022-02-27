@@ -3,8 +3,6 @@ import {IAuthApiData, IAuthApiLoginData} from '../../service/auth/auth.helper';
 import store from '../../modules/store/store';
 import appRouteTransitions from '../../utils/app-router/app-route-transitions';
 
-//export type IAuthLoginData = IAuthApiLoginData;
-
 class AuthController {
   constructor(private authService = new AuthService()) {
     //

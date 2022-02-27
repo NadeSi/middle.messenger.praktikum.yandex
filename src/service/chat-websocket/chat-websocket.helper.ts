@@ -1,4 +1,4 @@
-import {MessageType} from '../../models/chat';
+import {MessageType} from '../../models/message';
 
 export enum ChatWebsocketMessageType {
   MESSAGE = 'message',
@@ -10,7 +10,7 @@ export enum ChatWebsocketMessageType {
 }
 
 export const isMessageType = (type: ChatWebsocketMessageType) => {
-  console.log('isMessageType', type, [ChatWebsocketMessageType.MESSAGE, ChatWebsocketMessageType.FILE].includes(type));
+  //console.log('isMessageType', type, [ChatWebsocketMessageType.MESSAGE, ChatWebsocketMessageType.FILE].includes(type));
   return [ChatWebsocketMessageType.MESSAGE, ChatWebsocketMessageType.FILE].includes(type);
 };
 

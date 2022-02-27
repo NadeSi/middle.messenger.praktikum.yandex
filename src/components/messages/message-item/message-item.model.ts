@@ -1,4 +1,4 @@
-import {MessageItem} from '../../../models/chat';
+import {MessageItem} from '../../../models/message';
 
 type MessageItemInnerProps = {
   userId: MessageItem['userId'];
