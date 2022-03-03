@@ -8,10 +8,14 @@ $border: 1px solid $border-color;
 $component-background-color: #EFEFEF;
 $secondary-background-color: #FBFBFB;
 
-$blue-color: #3369F3;
-$error-color: rgba(255, 72, 72, 36%);
+$blue-color: #3390EC;
+$red-color: rgb(255, 72, 72);
+$error-color: rgba(255, 72, 72, 0.36);
 
+$chat-background-color: rgba(51, 144, 236, 0.11);
 $message-in-background-color: #F8F8F8;
 $message-out-background-color: #E4EDFD;
 
 $button-cancel-color: $blue-color;
+
+$sidebar-header-height: 54px;

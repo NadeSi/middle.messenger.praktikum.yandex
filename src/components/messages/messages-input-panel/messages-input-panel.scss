@@ -1,5 +1,7 @@
 @import "../../../styles/variables";
 
+$iconFolder: "../../../styles/icons";
+
 .messages-input-panel {
 
   height: 54px;
@@ -12,29 +14,17 @@
   gap: 10px;
 }
 
-.button-add-file {
-  $size: 32px;
-
-  width: $size;
-  height: $size;
-
-  .icon-add-file {
-
-    background-image: url("./icons/clip.svg");
-  }
-}
-
-.button-send {
+.button-send-message {
   $size: 28px;
 
-  width: $size;
-  height: $size;
+  min-width: $size;
+  min-height: $size;
 
-  border-radius: 50%;
   background-color: $blue-color;
 
-  .icon-send {
+  .icon {
 
-    background-image: url("./icons/arrow.svg");
+    width: 70%;
+    height: 90%;
   }
 }

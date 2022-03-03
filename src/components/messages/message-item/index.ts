@@ -1,20 +1,22 @@
 import Handlebars from 'handlebars';
 import {Component} from '../../../modules/component';
-import {IMessageItemProps} from './message-item.model';
+import {MessageItemProps} from './message-item.model';
 import template from './message-item.tmpl';
+
+import {AuthController} from '../../../controllers/auth';
+import {getMessageDate} from '../../../utils/message-date';
 
 import './message-item.scss';
 
-class MessageItemComponent extends Component {
-  constructor(props: IMessageItemProps) {
-    Handlebars.registerHelper('isCurrentUser', function (userLogin) {
-      //TODO научиться определять текущего пользователя
-      return userLogin === 'alex';
+class MessageItemComponent extends Component<MessageItemProps> {
+  constructor(props: MessageItemProps) {
+    Handlebars.registerHelper('isCurrentUser', function (userId) {
+      return userId === AuthController.getCurrentUser()?.id;
     });
 
     super('message-item', template, {
       ...props,
-      time: `${props.date.getHours()}:${props.date.getMinutes()}`,
+      time: getMessageDate(props.date),
     });
   }
 }

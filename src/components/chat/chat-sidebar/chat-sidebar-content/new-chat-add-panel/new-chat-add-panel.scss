@@ -1,0 +1,25 @@
+@import "../../../../../styles/variables";
+
+.chat-new-title-container {
+
+  margin-top: 0.5em;
+}
+
+.button-new-chat-add {
+  /* TODO копия chat-add-button вынести в общий компонент */
+  $offset: 1.25rem;
+  $size: 54px;
+
+  position: absolute;
+  bottom: $offset;
+  right: $offset;
+
+  padding: 0;
+  width: $size;
+  height: $size;
+
+  border-radius: 50%;
+  border: 1px solid $button-cancel-color;
+
+  background-color: $button-cancel-color;
+}

@@ -1,0 +1,30 @@
+@import "../../../../styles/variables";
+
+.button-cancel-container {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 64px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $secondary-background-color;
+
+  .button-cancel {
+    $size: 28px;
+
+    width: $size;
+    height: $size;
+
+    border-radius: 50%;
+    border: 1px solid $button-cancel-color;
+
+    background-color: $button-cancel-color;
+  }
+}

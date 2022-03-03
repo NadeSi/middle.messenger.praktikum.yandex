@@ -1,31 +1,39 @@
-import Block from '../../modules/block';
-import {displayPage} from '../../utils/display-page';
-import {LoginProps, formElementsDefinition} from './login.model';
+import {formElementsDefinition, LoginPageProps} from './login.model';
 import template from './login.tmpl';
 import AuthComponent from '../../components/auth';
-import InputComponent from '../../components/input';
-import FormComponent from '../../components/form';
+import FormComponent, {getFormKeys} from '../../components/form';
 import {validateFormInput} from '../../utils/validation';
+import LinkComponent from '../../components/common/link';
+import AppRoutes from '../../utils/app-router/app-routes';
+import Router from '../../modules/router/router';
+import {getFormValues} from '../../components/form';
+import {AuthController} from '../../controllers/auth';
+import {IState} from '../../modules/store';
+import connect from '../../modules/connect';
+import Page from '../../modules/page';
+import {AuthLoginItem} from '../../models/auth';
 
-export class Login extends Block<LoginProps> {
+class Login extends Page<LoginPageProps> {
+  router = Router.getInstance();
+
   constructor() {
     super('page-login', template, {
       authForm: new AuthComponent({
         header: 'Вход',
-        linkText: 'Регистрация',
+        link: new LinkComponent({
+          text: 'Регистрация',
+          href: AppRoutes.REGISTER,
+        }),
         form: new FormComponent(
           {
             formName: 'login-form',
             buttonSubmitText: 'Войти',
-            formInputs: formElementsDefinition.map((formElement) => {
-              return new InputComponent({
-                name: formElement.name,
-                label: formElement.label,
-                type: formElement.type,
-                value: formElement.value,
-                placeholder: formElement.placeholder,
-              });
+            formInputsModel: formElementsDefinition.map((formElement) => {
+              return {
+                ...formElement,
+              };
             }),
+            formInputValues: getFormValues(formElementsDefinition),
           },
           {
             onSubmit: (formData: FormData) => this.handleSubmit(formData),
@@ -37,11 +45,13 @@ export class Login extends Block<LoginProps> {
   }
 
   handleSubmit(formData: FormData) {
-    const data = {
-      login: formData.get('login'),
-      password: formData.get('password'),
-    };
-    console.log(data);
+    const data: Record<string, unknown> = {};
+
+    getFormKeys(formElementsDefinition).forEach((formKey) => {
+      data[formKey] = formData.get(formKey) as string;
+    });
+
+    AuthController.login(<AuthLoginItem>data);
   }
 
   handleFormInputValidate(formInput: HTMLInputElement): boolean {
@@ -54,5 +64,10 @@ export class Login extends Block<LoginProps> {
   }
 }
 
-const page = new Login();
-displayPage(page);
+function mapStateToProps(state: IState) {
+  return {
+    currentUser: state.currentUser,
+  };
+}
+
+export default connect(Login, mapStateToProps);

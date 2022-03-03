@@ -1,7 +1,7 @@
-import Block from '../modules/block';
+import Block from '../modules/block/block';
 
-export function displayPage(page: Block) {
-  const root = document.querySelector('#root');
+export function displayPage(rootQuery: string, page: Block) {
+  const root = document.querySelector(rootQuery);
   const pageContent = page.getContent();
   if (root && pageContent) {
     root.appendChild(pageContent);

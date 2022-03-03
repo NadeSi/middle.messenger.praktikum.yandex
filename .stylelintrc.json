@@ -19,6 +19,7 @@
       }
     ],
     "color-hex-case": "upper",
-    "color-function-notation": "legacy"
+    "color-function-notation": "legacy",
+    "alpha-value-notation": "number"
   }
 }

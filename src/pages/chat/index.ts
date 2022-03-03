@@ -1,85 +1,128 @@
-import Block from '../../modules/block';
-import {displayPage} from '../../utils/display-page';
-
 import template from './chat.tmpl';
 import {ChatProps} from './chat.model';
-import InputComponent from '../../components/input';
-import {IInputType} from '../../components/input';
-import ChatPanelComponent from '../../components/chat/chat-panel';
-import ChatItemComponent from '../../components/chat/chat-item';
-import MessagesTopPanelComponent from '../../components/messages/messages-top-panel';
-import MessagesViewPanelComponent from '../../components/messages/messages-view-panel';
-import MessagesInputPanelComponent from '../../components/messages/messages-input-panel';
-import MessageItemComponent from '../../components/messages/message-item';
+
+import Page from '../../modules/page';
+
+import {IState} from '../../modules/store';
+import connect from '../../modules/connect';
+import {ChatsController} from '../../controllers/chats';
+import Router from '../../modules/router/router';
+import ChatMainPanelComponent from '../../components/chat/chat-main-panel';
+import isEqual from '../../utils/helpers/isEqual';
+import store from '../../modules/store/store';
+import {ActiveChat} from '../../models/chat';
+import {ChatWebSocket} from '../../service/chat-websocket/chat-websocket';
+import {ChatSidebarLeftComponent, ChatSidebarRightComponent} from '../../components/chat/chat-sidebar';
 
 import './chat.scss';
 
-export class Chat extends Block<ChatProps> {
+class Chat extends Page<ChatProps> {
+  router = Router.getInstance();
+  activeChatSession?: ChatWebSocket;
+
   constructor() {
     super('page-chat', template, {
-      chatPanel: new ChatPanelComponent({
-        inputSearch: new InputComponent({
-          name: 'inputSearch',
-          type: IInputType.text,
-          placeholder: 'Поиск',
-          value: '',
-        }),
-        chatItemList: [
-          new ChatItemComponent({
-            header: 'Андрей',
-          }),
-          new ChatItemComponent({
-            header: 'Вадим',
-            lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! Спешу вам сообщить, что бла-бла-бла',
-            date: '15.07',
-            notificationCount: 33,
-          }),
-        ],
-      }),
-      messagesTopPanel: new MessagesTopPanelComponent({
-        userName: 'Alex',
-      }),
-      messagesViewPanel: new MessagesViewPanelComponent({
-        messageDateGroup: [
-          {
-            date: '12 декабря',
-            messageItemList: [
-              new MessageItemComponent({userLogin: 'ha123', message: 'привет', date: new Date('12.12.2021 11:32:00')}),
-              new MessageItemComponent({
-                userLogin: 'ha123',
-                message: 'как дела',
-                date: new Date('12.12.2021 11:32:03'),
-              }),
-              new MessageItemComponent({userLogin: 'alex', message: 'норм', date: new Date('12.12.2021 11:35:40')}),
-              new MessageItemComponent({
-                userLogin: 'alex',
-                message: 'бла-бла бла бла бла, бла бла бла; бла-бла бла бла бла, бла бла бла',
-                date: new Date('12.12.2021 11:35:40'),
-              }),
-            ],
-          },
-        ],
-      }),
-      messagesInputPanel: new MessagesInputPanelComponent(
-        {
-          inputMessage: new InputComponent({
-            name: 'message',
-            type: IInputType.text,
-            value: '',
-            placeholder: 'Сообщение',
-          }),
-        },
-        {
-          onSendMessage: (message) => this.handleSendMessage(message),
-        },
-      ),
+      chatList: [],
+      chatUserList: [],
+      activeChat: {},
+      activeChatContent: [],
+    });
+
+    this.handleChangeActiveChat = this.handleChangeActiveChat.bind(this);
+
+    this.props.chatSidebarRight = new ChatSidebarRightComponent({
+      chatList: this.props.chatList,
+    });
+
+    this.props.chatSidebarLeft = new ChatSidebarLeftComponent({});
+
+    this.props.chatMainPanel = new ChatMainPanelComponent(
+      {
+        activeChat: this.props.activeChat,
+        activeChatContent: this.props.activeChatContent,
+      },
+      {
+        handleSendMessage: (e) => this.handleSendMessage(e),
+      },
+    );
+  }
+
+  componentDidUpdate(oldProps: ChatProps, newProps: ChatProps) {
+    /**sidebar right components*/
+    if (!isEqual(oldProps.sidebarRight, newProps.sidebarRight)) {
+      this.props.chatSidebarRight?.setProps({...newProps.sidebarRight});
+    }
+
+    if (!isEqual(oldProps.chatList, newProps.chatList)) {
+      this.props.chatSidebarRight?.setProps({
+        chatList: newProps.chatList,
+      });
+    }
+    /**sidebar right components*/
+
+    /**sidebar left components*/
+    if (!isEqual(oldProps.sidebarLeft, newProps.sidebarLeft)) {
+      this.props.chatSidebarLeft?.setProps({...newProps.sidebarLeft});
+    }
+
+    if (!isEqual(oldProps.chatUserList, newProps.chatUserList)) {
+      this.props.chatSidebarLeft?.setProps({
+        chatUserList: newProps.chatUserList,
+      });
+    }
+    /**sidebar left components*/
+
+    if (!isEqual(oldProps.activeChat, newProps.activeChat)) {
+      this.props.chatSidebarRight?.setProps({activeChat: newProps.activeChat});
+      this.props.chatSidebarLeft?.setProps({activeChat: newProps.activeChat});
+      this.props.chatMainPanel?.setProps({activeChat: newProps.activeChat});
+      this.handleChangeActiveChat(newProps.activeChat);
+    }
+
+    if (!isEqual(oldProps.activeChatContent, newProps.activeChatContent)) {
+      this.props.chatMainPanel?.setProps({activeChatContent: newProps.activeChatContent});
+    }
+
+    return true;
+  }
+
+  handleChangeActiveChat(activeChat: ActiveChat) {
+    if (this.activeChatSession) {
+      this.activeChatSession.close();
+      store.set('activeChatContent', []);
+    }
+
+    if (!activeChat?.id) {
+      return;
+    }
+
+    ChatsController.getChatUsers(activeChat.id);
+
+    ChatsController.getChatToken(activeChat.id).then((token) => {
+      if (token && this.props.currentUser?.id) {
+        this.activeChatSession = new ChatWebSocket(this.props.currentUser?.id, activeChat.id, token);
+      }
     });
   }
 
-  handleSendMessage(message: any) {
-    console.log(message);
+  handleSendMessage(message: string) {
+    this.activeChatSession && this.activeChatSession.sendMessage(message);
   }
 }
 
-const page = new Chat();
-displayPage(page);
+function mapStateToProps(state: IState) {
+  return {
+    currentUser: {...state.currentUser},
+
+    sidebarRight: {...state.sidebarRight},
+    sidebarLeft: {...state.sidebarLeft},
+
+    chatList: state.chatList || [],
+    chatUserList: state.userList || [],
+
+    activeChat: {...state.activeChat} || {},
+    activeChatContent: state.activeChatContent || [],
+  } as ChatProps;
+}
+
+export default connect(Chat, mapStateToProps);
