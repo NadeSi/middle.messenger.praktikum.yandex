@@ -1,4 +1,4 @@
-import ChatChatMainPanelComponent from '../../components/chat/chat-main-panel';
+import ChatMainPanelComponent from '../../components/chat/chat-main-panel';
 import {ActiveChat, ActiveChatContent, ChatItem} from '../../models/chat';
 import {CurrentUserItem} from '../../models/auth';
 import {
@@ -9,7 +9,7 @@ import {
 
 export type ChatInnerProps = {
   chatSidebarRight?: ChatSidebarRightComponent;
-  chatMainPanel?: ChatChatMainPanelComponent;
+  chatMainPanel?: ChatMainPanelComponent;
   chatSidebarLeft?: ChatSidebarLeftComponent;
 };
 

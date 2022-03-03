@@ -10,7 +10,7 @@ import store from '../../../modules/store/store';
 
 import './chat-main-panel.scss';
 
-class ChatChatMainPanelComponent extends Component<ChatMainPanelProps> {
+class ChatMainPanelComponent extends Component<ChatMainPanelProps> {
   handlers: ChatMainPanelHandlers = {};
 
   constructor(props: ChatMainPanelOuterProps, handlers: ChatMainPanelHandlers) {
@@ -66,4 +66,4 @@ class ChatChatMainPanelComponent extends Component<ChatMainPanelProps> {
   };
 }
 
-export default ChatChatMainPanelComponent;
+export default ChatMainPanelComponent;

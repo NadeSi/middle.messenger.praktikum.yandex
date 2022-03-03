@@ -7,7 +7,7 @@ import {IState} from '../../modules/store';
 import connect from '../../modules/connect';
 import {ChatsController} from '../../controllers/chats';
 import Router from '../../modules/router/router';
-import ChatChatMainPanelComponent from '../../components/chat/chat-main-panel';
+import ChatMainPanelComponent from '../../components/chat/chat-main-panel';
 import isEqual from '../../utils/helpers/isEqual';
 import store from '../../modules/store/store';
 import {ActiveChat} from '../../models/chat';
@@ -36,7 +36,7 @@ class Chat extends Page<ChatProps> {
 
     this.props.chatSidebarLeft = new ChatSidebarLeftComponent({});
 
-    this.props.chatMainPanel = new ChatChatMainPanelComponent(
+    this.props.chatMainPanel = new ChatMainPanelComponent(
       {
         activeChat: this.props.activeChat,
         activeChatContent: this.props.activeChatContent,
