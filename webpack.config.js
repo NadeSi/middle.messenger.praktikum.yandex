@@ -66,7 +66,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'messenger',
+      title: 'Messenger',
       template: 'static/index.html',
       inject: 'body',
     }),
