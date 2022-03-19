@@ -89,5 +89,4 @@ class FormComponent extends Component<FormProps> {
   };
 }
 
-export {IFormElementsDefinition, getFormKeys, getFormValues} from './form.model';
 export default FormComponent;

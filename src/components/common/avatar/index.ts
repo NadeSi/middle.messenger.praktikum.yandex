@@ -60,5 +60,5 @@ class AvatarComponent extends Component<AvatarProps> {
   };
 }
 
-export {AvatarHandlers};
+export type {AvatarHandlers};
 export default AvatarComponent;

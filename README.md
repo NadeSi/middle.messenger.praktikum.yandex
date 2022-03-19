@@ -12,8 +12,8 @@
 - список чатов,
 - обмен сообщениями
 
-## [Демо](https://hardcore-nightingale-df8279.netlify.app)
-Проект опубликован на Netlify 
+## Демо
+Проект опубликован на [Netlify](https://hardcore-nightingale-df8279.netlify.app) и [Heroku](https://ya-mes.herokuapp.com/)  
 
 ## Установка
 

@@ -1,12 +1,12 @@
 import {formElementsDefinition, LoginPageProps} from './login.model';
 import template from './login.tmpl';
 import AuthComponent from '../../components/auth';
-import FormComponent, {getFormKeys} from '../../components/form';
+import FormComponent from '../../components/form';
+import {getFormKeys, getFormValues} from '../../components/form/form.model';
 import {validateFormInput} from '../../utils/validation';
 import LinkComponent from '../../components/common/link';
 import AppRoutes from '../../utils/app-router/app-routes';
 import Router from '../../modules/router/router';
-import {getFormValues} from '../../components/form';
 import {AuthController} from '../../controllers/auth';
 import {IState} from '../../modules/store';
 import connect from '../../modules/connect';

@@ -19,12 +19,14 @@ module.exports = {
         warnings: false,
       },
     },
+    historyApiFallback: true,
   },
   entry: path.join(SRC_DIR, 'index.ts'),
   output: {
     filename: '[name].js',
     path: OUTPUT_DIR,
     clean: true,
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.ts', ".js"],

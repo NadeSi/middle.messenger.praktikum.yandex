@@ -26,5 +26,5 @@ class ButtonComponent extends Component<ButtonProps> {
   };
 }
 
-export {ButtonHandlers};
+export type {ButtonHandlers};
 export default ButtonComponent;

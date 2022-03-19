@@ -4,7 +4,8 @@ import template from './chat-users-panel.tmpl';
 
 import isEqual from '../../../../../utils/helpers/isEqual';
 import ButtonIconComponent from '../../../../common/button/button-icon';
-import InputComponent, {IInputType} from '../../../../common/input';
+import InputComponent from '../../../../common/input';
+import {IInputType} from '../../../../common/input/input.model';
 import {UserController} from '../../../../../controllers/user';
 import ChatItemListComponent from '../_components/chat-item-list';
 
@@ -78,5 +79,5 @@ class ChatUsersPanelComponent extends Component<ChatUsersPanelProps> {
   }
 }
 
-export {ChatUsersPanelOuterProps as ChatUsersPanelProps, ChatUsersPanelHandlers};
+export type {ChatUsersPanelOuterProps as ChatUsersPanelProps, ChatUsersPanelHandlers};
 export default ChatUsersPanelComponent;

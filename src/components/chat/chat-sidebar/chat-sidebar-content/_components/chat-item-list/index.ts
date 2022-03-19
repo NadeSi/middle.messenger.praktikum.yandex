@@ -32,5 +32,5 @@ class ChatItemListComponent extends Component<ChatItemListProps> {
   }
 }
 
-export {ChatItemListOuterProps as ChatItemListProps, ChatItemListHandlers};
+export type {ChatItemListOuterProps as ChatItemListProps, ChatItemListHandlers};
 export default ChatItemListComponent;

@@ -9,9 +9,9 @@ import AppRoutes from '../../utils/app-router/app-routes';
 import {validateFormInput} from '../../utils/validation';
 import {AuthController} from '../../controllers/auth';
 import AuthComponent from '../../components/auth';
-import FormComponent, {getFormKeys} from '../../components/form';
+import FormComponent from '../../components/form';
+import {getFormValues, getFormKeys} from '../../components/form/form.model';
 import LinkComponent from '../../components/common/link';
-import {getFormValues} from '../../components/form';
 import {AuthItem} from '../../models/auth';
 
 class Register extends Page<RegisterProps> {

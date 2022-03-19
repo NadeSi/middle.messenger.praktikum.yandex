@@ -1,8 +1,9 @@
-import {IInputType} from '../../components/common/input';
+import {IInputType} from '../../components/common/input/input.model';
 import ButtonComponent from '../../components/common/button/button';
 import ButtonCancelComponent from '../../components/common/button/button-cancel';
 import AvatarComponent from '../../components/common/avatar';
-import FormComponent, {IFormElementsDefinition} from '../../components/form';
+import FormComponent from '../../components/form';
+import {IFormElementsDefinition} from '../../components/form/form.model';
 import {FORM_VALIDATE_PATTERNS} from '../../utils/validation';
 import {CurrentUserItem, CurrentUserPasswordItem} from '../../models/auth';
 

@@ -2,7 +2,8 @@ import {Component} from '../../../modules/component';
 import {MessagesInputPanelHandlers, MessagesInputPanelProps} from './messages-input-panel.model';
 import template from './messages-input-panel.tmpl';
 
-import InputComponent, {IInputType} from '../../common/input';
+import InputComponent from '../../common/input';
+import {IInputType} from '../../common/input/input.model';
 import ButtonIconComponent from '../../common/button/button-icon';
 
 import './messages-input-panel.scss';
@@ -64,5 +65,5 @@ class MessagesInputPanelComponent extends Component<MessagesInputPanelProps> {
   }
 }
 
-export {MessagesInputPanelHandlers};
+export type {MessagesInputPanelHandlers};
 export default MessagesInputPanelComponent;

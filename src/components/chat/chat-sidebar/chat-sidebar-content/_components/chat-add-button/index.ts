@@ -29,5 +29,5 @@ class ChatAddButtonComponent extends Component {
   };
 }
 
-export {ChatAddButtonHandlers};
+export type {ChatAddButtonHandlers};
 export default ChatAddButtonComponent;

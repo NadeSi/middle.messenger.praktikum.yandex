@@ -26,6 +26,5 @@ class InputComponent extends Component {
   };
 }
 
-export {IInputType} from './input.model';
-export {IInputProps};
+export type {IInputProps};
 export default InputComponent;
