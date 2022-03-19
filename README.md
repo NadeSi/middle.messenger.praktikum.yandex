@@ -1,4 +1,4 @@
-**Sprint 3 pull request** https://github.com/NadeSi/middle.messenger.praktikum.yandex/pull/5
+**Sprint 4 pull request** https://github.com/NadeSi/middle.messenger.praktikum.yandex/pull/6
 
 ## Проектная работа «Мессенджер»
 **Проект в этапе разработки**
