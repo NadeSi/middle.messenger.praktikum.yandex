@@ -28,5 +28,4 @@ class MessagesViewPanelComponent extends Component<MessagesViewPanelProps> {
   }
 }
 
-export {MessagesViewPanelOuterProps as MessagesViewPanelProps};
 export default MessagesViewPanelComponent;

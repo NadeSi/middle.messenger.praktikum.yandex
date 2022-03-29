@@ -1,6 +1,6 @@
 import AuthComponent from '../../components/auth';
-import {IFormElementsDefinition} from '../../components/form';
-import {IInputType} from '../../components/common/input';
+import {IFormElementsDefinition} from '../../components/form/form.model';
+import {IInputType} from '../../components/common/input/input.model';
 import {FORM_VALIDATE_PATTERNS} from '../../utils/validation';
 import {AuthLoginItem, CurrentUserItem} from '../../models/auth';
 

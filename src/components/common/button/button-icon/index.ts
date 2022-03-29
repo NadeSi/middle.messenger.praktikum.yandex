@@ -26,5 +26,5 @@ class ButtonIconComponent extends Component<ButtonIconProps> {
   };
 }
 
-export {ButtonIconHandlers};
+export type {ButtonIconHandlers};
 export default ButtonIconComponent;

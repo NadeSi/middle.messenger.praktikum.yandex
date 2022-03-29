@@ -6,7 +6,8 @@ import Page from '../../../modules/page';
 import {IState} from '../../../modules/store';
 
 import ButtonCancelComponent from '../../../components/common/button/button-cancel';
-import FormComponent, {getFormKeys, getFormValues} from '../../../components/form';
+import FormComponent from '../../../components/form';
+import {getFormKeys, getFormValues} from '../../../components/form/form.model';
 import AppRoutes from '../../../utils/app-router/app-routes';
 
 import ButtonComponent from '../../../components/common/button/button';

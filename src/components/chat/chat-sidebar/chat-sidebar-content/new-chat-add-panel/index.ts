@@ -3,7 +3,8 @@ import {NewChatAddPanelHandlers, NewChatAddPanelOuterProps, NewChatAddPanelProps
 import template from './new-chat-add-panel.tmpl';
 
 import ButtonIconComponent from '../../../../common/button/button-icon';
-import InputComponent, {IInputType} from '../../../../common/input';
+import InputComponent from '../../../../common/input';
+import {IInputType} from '../../../../common/input/input.model';
 import {ChatsController} from '../../../../../controllers/chats';
 import ChatAddButtonComponent from '../_components/chat-add-button';
 

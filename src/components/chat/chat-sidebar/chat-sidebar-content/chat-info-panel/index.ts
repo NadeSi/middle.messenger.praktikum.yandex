@@ -101,5 +101,5 @@ class ChatInfoPanelComponent extends Component<ChatInfoPanelProps> {
   }
 }
 
-export {ChatInfoPanelOuterProps as ChatInfoPanelProps, ChatInfoPanelHandlers};
+export type {ChatInfoPanelOuterProps as ChatInfoPanelProps, ChatInfoPanelHandlers};
 export default ChatInfoPanelComponent;

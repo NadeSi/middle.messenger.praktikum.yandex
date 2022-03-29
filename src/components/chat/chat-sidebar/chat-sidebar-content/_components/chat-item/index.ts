@@ -64,5 +64,5 @@ class ChatItemComponent extends Component<ChatItemProps> {
   }
 }
 
-export {ChatItemHandlers};
+export type {ChatItemHandlers};
 export default ChatItemComponent;

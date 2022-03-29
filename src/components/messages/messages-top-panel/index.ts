@@ -41,5 +41,5 @@ class MessagesTopPanelComponent extends Component<MessagesTopPanelProps> {
   }
 }
 
-export {MessagesTopPanelOuterProps as MessagesTopPanelProps, MessagesTopPanelHandlers};
+export type {MessagesTopPanelOuterProps as MessagesTopPanelProps, MessagesTopPanelHandlers};
 export default MessagesTopPanelComponent;
